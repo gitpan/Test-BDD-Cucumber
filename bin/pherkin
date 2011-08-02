@@ -1,0 +1,9 @@
+#!/usr/bin/env perl
+
+# See App::pherkin for documentation
+use strict;
+use warnings;
+use FindBin::libs;
+
+use App::pherkin;
+App::pherkin->run( @ARGV );
