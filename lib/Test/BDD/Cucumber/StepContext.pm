@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::StepContext;
 BEGIN {
-  $Test::BDD::Cucumber::StepContext::VERSION = '0.01'; # TRIAL
+  $Test::BDD::Cucumber::StepContext::VERSION = '0.01';
 }
 use Moose;
 

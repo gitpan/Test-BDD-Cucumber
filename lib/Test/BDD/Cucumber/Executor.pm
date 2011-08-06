@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Executor;
 BEGIN {
-  $Test::BDD::Cucumber::Executor::VERSION = '0.01'; # TRIAL
+  $Test::BDD::Cucumber::Executor::VERSION = '0.01';
 }
 
 =head1 NAME

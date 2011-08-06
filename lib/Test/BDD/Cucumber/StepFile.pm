@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::StepFile;
 BEGIN {
-  $Test::BDD::Cucumber::StepFile::VERSION = '0.01'; # TRIAL
+  $Test::BDD::Cucumber::StepFile::VERSION = '0.01';
 }
 
 =head1 NAME

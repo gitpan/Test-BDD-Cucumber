@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Model::Document;
 BEGIN {
-  $Test::BDD::Cucumber::Model::Document::VERSION = '0.01'; # TRIAL
+  $Test::BDD::Cucumber::Model::Document::VERSION = '0.01';
 }
 
 use Moose;
@@ -8,12 +8,11 @@ use Test::BDD::Cucumber::Model::Line;
 
 =head1 NAME
 
+Test::BDD::Cucumber::Model::Document - Model to represent a feature file on disk or in memory
 
 =head1 VERSION
 
 version 0.01
-Test::BDD::Cucumber::Model::Document - Model to represent a feature file on disk
-or in memory
 
 =head1 DESCRIPTION
 

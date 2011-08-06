@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Parser;
 BEGIN {
-  $Test::BDD::Cucumber::Parser::VERSION = '0.01'; # TRIAL
+  $Test::BDD::Cucumber::Parser::VERSION = '0.01';
 }
 
 =head1 NAME

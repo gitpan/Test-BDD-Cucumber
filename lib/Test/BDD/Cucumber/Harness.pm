@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Harness;
 BEGIN {
-  $Test::BDD::Cucumber::Harness::VERSION = '0.01'; # TRIAL
+  $Test::BDD::Cucumber::Harness::VERSION = '0.01';
 }
 
 =head1 NAME

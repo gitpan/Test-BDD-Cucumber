@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Harness::TermColor;
 BEGIN {
-  $Test::BDD::Cucumber::Harness::TermColor::VERSION = '0.01'; # TRIAL
+  $Test::BDD::Cucumber::Harness::TermColor::VERSION = '0.01';
 }
 
 =head1 NAME

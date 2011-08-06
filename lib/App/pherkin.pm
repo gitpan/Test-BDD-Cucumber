@@ -1,6 +1,6 @@
 package App::pherkin;
 BEGIN {
-  $App::pherkin::VERSION = '0.01'; # TRIAL
+  $App::pherkin::VERSION = '0.01';
 }
 
 use strict;

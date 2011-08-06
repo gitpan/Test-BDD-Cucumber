@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Util;
 BEGIN {
-  $Test::BDD::Cucumber::Util::VERSION = '0.01'; # TRIAL
+  $Test::BDD::Cucumber::Util::VERSION = '0.01';
 }
 
 use strict;
