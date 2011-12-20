@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Loader;
-BEGIN {
-  $Test::BDD::Cucumber::Loader::VERSION = '0.01';
+{
+  $Test::BDD::Cucumber::Loader::VERSION = '0.02';
 }
 
 =head1 NAME
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::Loader - Simplify loading of Step Definition and feature fi
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 DESCRIPTION
 
@@ -76,7 +76,7 @@ sub load {
             );
             ouch 'failed_feature_load', "Unable to load $file: $failure";
         }
-    } ( $file ? ($file) : File::Find::Rule
+    } ( $file ? ($file.'') : File::Find::Rule
         ->file()
         ->name( '*.feature' )
         ->in( $dir ) );

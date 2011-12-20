@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Parser;
-BEGIN {
-  $Test::BDD::Cucumber::Parser::VERSION = '0.01';
+{
+  $Test::BDD::Cucumber::Parser::VERSION = '0.02';
 }
 
 =head1 NAME
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::Parser - Parse Feature files
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 DESCRIPTION
 
@@ -106,8 +106,7 @@ sub _extract_conditions_of_satisfaction {
 	my ( $self, $feature, @lines ) = @_;
 
 	while ( my $line = shift( @lines ) ) {
-		next if $line->is_comment;
-		last if $line->is_blank;
+		next if $line->is_comment || $line->is_blank;
 
 		if ( $line->content =~ m/^(Background|Scenario):/ ) {
 			unshift( @lines, $line );
