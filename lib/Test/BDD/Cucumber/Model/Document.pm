@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Model::Document;
-{
-  $Test::BDD::Cucumber::Model::Document::VERSION = '0.02';
+BEGIN {
+  $Test::BDD::Cucumber::Model::Document::VERSION = '0.03';
 }
 
 use Moose;
@@ -12,7 +12,7 @@ Test::BDD::Cucumber::Model::Document - Model to represent a feature file on disk
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 DESCRIPTION
 
@@ -45,6 +45,14 @@ objects
 
 has 'lines'    => ( is => 'rw', default => sub {[]},
 	isa => 'ArrayRef[Test::BDD::Cucumber::Model::Line]' );
+
+=head1 OTHER
+
+=head2 BUILD
+
+The instantiation populates C<lines()> by splitting the input on newlines.
+
+=cut
 
 # Create lines
 sub BUILD {

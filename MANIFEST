@@ -17,6 +17,7 @@ lib/App/pherkin.pm
 lib/Test/BDD/Cucumber.pm
 lib/Test/BDD/Cucumber/Executor.pm
 lib/Test/BDD/Cucumber/Harness.pm
+lib/Test/BDD/Cucumber/Harness/Data.pm
 lib/Test/BDD/Cucumber/Harness/TermColor.pm
 lib/Test/BDD/Cucumber/Harness/TestBuilder.pm
 lib/Test/BDD/Cucumber/Loader.pm
@@ -27,6 +28,7 @@ lib/Test/BDD/Cucumber/Manual/Tutorial.pod
 lib/Test/BDD/Cucumber/Model/Document.pm
 lib/Test/BDD/Cucumber/Model/Feature.pm
 lib/Test/BDD/Cucumber/Model/Line.pm
+lib/Test/BDD/Cucumber/Model/Result.pm
 lib/Test/BDD/Cucumber/Model/Scenario.pm
 lib/Test/BDD/Cucumber/Model/Step.pm
 lib/Test/BDD/Cucumber/Parser.pm
@@ -34,9 +36,6 @@ lib/Test/BDD/Cucumber/StepContext.pm
 lib/Test/BDD/Cucumber/StepFile.pm
 lib/Test/BDD/Cucumber/Util.pm
 script/make_corpus.pl
-t/020_parser_020_corpus.t
-t/030_pherkin_010_sanity.t
-t/900_run_features.t
 t/910_run_example_features.t
 t/920_run_core_features.t
 t/auto_corpus/calculator.feature_corpus
@@ -65,6 +64,10 @@ t/cucumber_core_features/cucumber-features/step_definitions/cucumber_stepdefs.rb
 t/cucumber_core_features/cucumber-features/tags.feature
 t/cucumber_core_features/cucumber-features/wire_protocol.feature
 t/cucumber_core_features/cucumber-features/world.feature
+t/cucumber_core_features/step_definitions/core_steps.pl
 t/lib/Test/DumpFeature.pm
+t/old/020_parser_020_corpus.t.old
+t/old/030_pherkin_010_sanity.t.old
+t/old/900_run_features.t.old
 t/release-pod-coverage.t
 t/release-pod-syntax.t

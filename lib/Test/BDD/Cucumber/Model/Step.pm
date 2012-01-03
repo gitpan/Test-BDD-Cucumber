@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Model::Step;
-{
-  $Test::BDD::Cucumber::Model::Step::VERSION = '0.02';
+BEGIN {
+  $Test::BDD::Cucumber::Model::Step::VERSION = '0.03';
 }
 
 use Moose;
@@ -11,7 +11,7 @@ Test::BDD::Cucumber::Model::Step - Model to represent a step in a scenario
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 DESCRIPTION
 
@@ -55,6 +55,16 @@ hashrefs for a data table.
 =cut
 
 has 'data' => ( is => 'rw' );
+
+=head2 data_as_strings
+
+An arrayref of strings containing the original step's data, for printing out
+by harnesses
+
+=cut
+
+has 'data_as_strings' => ( is => 'rw', default => sub {[]},
+	isa => 'ArrayRef[Str]' );
 
 =head1 AUTHOR
 

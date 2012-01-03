@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Parser;
-{
-  $Test::BDD::Cucumber::Parser::VERSION = '0.02';
+BEGIN {
+  $Test::BDD::Cucumber::Parser::VERSION = '0.03';
 }
 
 =head1 NAME
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::Parser - Parse Feature files
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 DESCRIPTION
 
@@ -168,7 +168,7 @@ sub _extract_steps {
 		if ( $line->content =~ m/^(Given|And|When|Then|But) (.+)/ ) {
 			my ( $verb, $text ) = ( $1, $2 );
 			my $original_verb = $verb;
-			$verb = $last_verb if lc($verb) eq 'and' or $verb eq 'but';
+			$verb = $last_verb if lc($verb) eq 'and' or lc($verb) eq 'but';
             $last_verb = $verb;
 
 			my $step = Test::BDD::Cucumber::Model::Step->new({
@@ -229,6 +229,7 @@ sub _extract_multiline_string {
 		my $content = $line->content_remove_indentation( $indent );
 		# Unescape it
 		$content =~ s/\\(.)/$1/g;
+		push( @{ $step->data_as_strings }, $content );
 		$content .= "\n";
 		$data .= $content;
 	}
@@ -249,6 +250,11 @@ sub _extract_table {
 		return ($line, @lines) if index( $line->content, '|' );
 
 		my @rows = $self->_pipe_array( $line->content );
+		if ( $target->can('data_as_strings') ) {
+			my $t_content = $line->content;
+			$t_content =~ s/^\s+//;
+			push( @{ $target->data_as_strings }, $t_content );
+		}
 
 		if ( @columns ) {
 			ouch 'parse_error', "Inconsistent number of rows in table", $line

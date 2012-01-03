@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::StepFile;
-{
-  $Test::BDD::Cucumber::StepFile::VERSION = '0.02';
+BEGIN {
+  $Test::BDD::Cucumber::StepFile::VERSION = '0.03';
 }
 
 =head1 NAME
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::StepFile - Functions for creating and loading Step Definiti
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =cut
 
@@ -20,7 +20,7 @@ use Ouch;
 
 require Exporter;
 our @ISA = qw(Exporter);
-our @EXPORT = qw(Given Then);
+our @EXPORT = qw(Given When Then Step);
 
 our @definitions;
 

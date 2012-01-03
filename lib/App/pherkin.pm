@@ -1,6 +1,6 @@
 package App::pherkin;
-{
-  $App::pherkin::VERSION = '0.02';
+BEGIN {
+  $App::pherkin::VERSION = '0.03';
 }
 
 use strict;
@@ -13,7 +13,7 @@ App::pherkin - Run Cucumber tests from the command line
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 
@@ -29,10 +29,6 @@ the features.
 
 Steps that pass will be printed in green, those that fail in red, and those
 for which there is no step definition as yellow (for TODO).
-
-If you'd like this to happen as part of your general test execution, consider
-using L<t/900_run_features.thttps://github.com/sheriff/test-bdd-cucumber-perl/blob/master/t/900_run_features.t>
-instead.
 
 =cut
 

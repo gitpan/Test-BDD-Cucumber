@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Harness::TestBuilder;
-{
-  $Test::BDD::Cucumber::Harness::TestBuilder::VERSION = '0.02';
+BEGIN {
+  $Test::BDD::Cucumber::Harness::TestBuilder::VERSION = '0.03';
 }
 
 =head1 NAME
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::Harness::TestBuilder - Pipes step output via Test::Builder
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 DESCRIPTION
 
@@ -29,6 +29,7 @@ has 'fail_skip' => ( is => 'rw', isa => 'Bool', default => 0 );
 my $li = ' ' x 7;
 my $ni = ' ' x 4;
 my $si = ' ' x 9;
+my $di = ' ' x 17;
 
 sub feature {
     my ( $self, $feature ) = @_;
@@ -47,24 +48,50 @@ sub scenario {
 }
 sub scenario_done { note ""; }
 
-sub step_done {
-    my ($self, $context, $tb_hash) = @_;
+sub step {}
 
-    my $step_name = $si . ucfirst($context->step->verb_original) . ' ' .
+sub step_done {
+    my ($self, $context, $result) = @_;
+    my $status = $result->result;
+
+	my $step = $context->step;
+    my $step_name = $si . ucfirst($step->verb_original) . ' ' .
         $context->text;
 
-    if ( $context->stash->{'step'}->{'notfound'} ) {
+    if ( $status eq 'undefined' || $status eq 'pending' ) {
         if ( $self->fail_skip ) {
             fail( "No matcher for: $step_name" );
+            $self->_note_step_data( $step );
         } else {
             TODO: { todo_skip $step_name, 1 };
+            $self->_note_step_data( $step );
         }
-    } elsif ( $tb_hash->{'builder'}->is_passing ) {
+    } elsif ( $status eq 'passing' ) {
         pass( $step_name );
+        $self->_note_step_data( $step );
     } else {
         fail( $step_name );
-        diag( ${$tb_hash->{'output'}} );
+        $self->_note_step_data( $step );
+        diag( $result->output );
     }
+}
+
+sub _note_step_data {
+	my ( $self, $step ) = @_;
+	my @step_data = @{ $step->data_as_strings };
+	return unless @step_data;
+
+	if ( ref( $step->data ) eq 'ARRAY' ) {
+		for ( @step_data ) {
+			note( $di . $_ );
+		}
+	} else {
+		note $di . '"""';
+		for ( @step_data ) {
+			note( $di . '  ' . $_ );
+		}
+		note $di . '"""';
+	}
 }
 
 =head1 AUTHOR

@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Harness;
-{
-  $Test::BDD::Cucumber::Harness::VERSION = '0.02';
+BEGIN {
+  $Test::BDD::Cucumber::Harness::VERSION = '0.03';
 }
 
 =head1 NAME
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::Harness - Base class for creating harnesses
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 DESCRIPTION
 
@@ -17,7 +17,9 @@ Harnesses allow your feature files to be executed while telling the outside
 world about how the testing is going, and what's being tested. This is a base
 class for creating new harnesses. You can see
 L<Test::BDD::Cucumber::Harness::TermColor> and
-L<Test::BDD::Cucumber::Harness::TestBuilder> for examples.
+L<Test::BDD::Cucumber::Harness::TestBuilder> for examples, although if you need
+to interact with the results in a more exciting way, you'd be best off
+interacting with L<Test::BDD::Cucumber::Harness::Data>.
 
 =head1 METHODS / EVENTS
 
@@ -65,16 +67,7 @@ sub scenario_done {
 
 Called at the start and end of step execution respectively. Both methods
 accept a L<Test::BDD::Cucmber::StepConcept> object. C<step_done> also accepts
-a hash of data relating to L<Test::Builder> of the structure:
-
-    {
-        output => SCALAR REF,
-        builder => Test::Builder object
-    };
-
-The output is the output of the step as if it had been run as a test script -
-useful for providing debugging output when a step has failed. The
-L<Test::Builder> is a localized instance just for that step.
+a L<Test::BDD::Cucumber::Model::Result> object.
 
 =cut
 
@@ -83,7 +76,7 @@ sub step {
 }
 
 sub step_done {
-    my ($self, $context, $tb_hash) = @_;
+    my ($self, $context, $result) = @_;
 
 }
 
