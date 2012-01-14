@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Model::Feature;
 BEGIN {
-  $Test::BDD::Cucumber::Model::Feature::VERSION = '0.03';
+  $Test::BDD::Cucumber::Model::Feature::VERSION = '0.04';
 }
 
 use Moose;
@@ -11,7 +11,7 @@ Test::BDD::Cucumber::Model::Document - Model to represent a feature file, parsed
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 DESCRIPTION
 

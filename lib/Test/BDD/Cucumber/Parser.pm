@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Parser;
 BEGIN {
-  $Test::BDD::Cucumber::Parser::VERSION = '0.03';
+  $Test::BDD::Cucumber::Parser::VERSION = '0.04';
 }
 
 =head1 NAME
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::Parser - Parse Feature files
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 DESCRIPTION
 
@@ -246,7 +246,6 @@ sub _extract_table {
 
 	while ( my $line = shift( @lines ) ) {
 		next if $line->is_comment;
-		return $self->_remove_next_blanks( @lines ) if $line->is_blank;
 		return ($line, @lines) if index( $line->content, '|' );
 
 		my @rows = $self->_pipe_array( $line->content );
