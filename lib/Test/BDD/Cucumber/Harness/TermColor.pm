@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Harness::TermColor;
 BEGIN {
-  $Test::BDD::Cucumber::Harness::TermColor::VERSION = '0.04';
+  $Test::BDD::Cucumber::Harness::TermColor::VERSION = '0.05';
 }
 
 =head1 NAME
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::Harness::TermColor - Prints colorized text to the screen
 
 =head1 VERSION
 
-version 0.04
+version 0.05
 
 =head1 DESCRIPTION
 
