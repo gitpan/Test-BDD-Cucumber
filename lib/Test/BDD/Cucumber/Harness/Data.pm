@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Harness::Data;
 BEGIN {
-  $Test::BDD::Cucumber::Harness::Data::VERSION = '0.05';
+  $Test::BDD::Cucumber::Harness::Data::VERSION = '0.06';
 }
 
 =head1 NAME
@@ -8,13 +8,13 @@ BEGIN {
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 Test::BDD::Cucumber::Harness::Data - Builds up an internal data representation
 of test passes / failures
 
 =head1 DESCRIPTION
 
-A L<Test::BDD::Cucumber::Harness> subclass which collates test data in C<data>.
+A L<Test::BDD::Cucumber::Harness> subclass which collates test data
 
 =cut
 

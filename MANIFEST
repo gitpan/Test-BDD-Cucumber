@@ -1,4 +1,4 @@
-Changes
+CHANGES
 LICENSE
 MANIFEST
 META.yml
@@ -6,6 +6,8 @@ Makefile.PL
 README
 README.pod
 TODO
+'Todo List (Autosaved).oo3/contents.xml'
+'Todo List.oo3/contents.xml'
 bin/pherkin
 dist.ini
 examples/calculator/features/basic.feature
@@ -36,6 +38,7 @@ lib/Test/BDD/Cucumber/StepContext.pm
 lib/Test/BDD/Cucumber/StepFile.pm
 lib/Test/BDD/Cucumber/Util.pm
 script/make_corpus.pl
+t/100_background_sections.t
 t/800_regressions_010_too_few_features.t
 t/900_run_cucumber_tests.t
 t/auto_corpus/calculator.feature_corpus
@@ -50,4 +53,3 @@ t/regressions/010_greedy_table_parsing/test.feature
 t/regressions/010_greedy_table_parsing/test_steps.pl
 t/release-pod-coverage.t
 t/release-pod-syntax.t
-test.feature

@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Harness;
 BEGIN {
-  $Test::BDD::Cucumber::Harness::VERSION = '0.05';
+  $Test::BDD::Cucumber::Harness::VERSION = '0.06';
 }
 
 =head1 NAME
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::Harness - Base class for creating harnesses
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 DESCRIPTION
 
@@ -38,11 +38,22 @@ accept a single argument of a L<Test::BDD::Cucumber::Model::Feature>.
 
 =cut
 
-sub feature { my ( $self, $feature ) = @_; }
+sub feature      { my ( $self, $feature ) = @_; }
+sub feature_done { my ( $self, $feature ) = @_; }
 
-sub feature_done {
-    my ( $self, $feature ) = @_;
-}
+=head2 background
+
+=head2 background_done
+
+If you have a background section, then we execute it as a quasi-scenario step
+before each scenario. These hooks are fired before and after that, and passed
+in the L<Test::BDD::Cucmber::Model::Scenario> that represents the Background
+section, and a a dataset hash (although why would you use that?)
+
+=cut
+
+sub background      { my ( $self, $scenario, $dataset ) = @_; }
+sub background_done { my ( $self, $scenario, $dataset ) = @_; }
 
 =head2 scenario
 
@@ -53,13 +64,8 @@ accept a L<Test::BDD::Cucmber::Model::Scenario> module and a dataset hash.
 
 =cut
 
-sub scenario {
-    my ( $self, $scenario, $dataset ) = @_;
-}
-
-sub scenario_done {
-    my ( $self, $scenario, $dataset ) = @_;
-}
+sub scenario      { my ( $self, $scenario, $dataset ) = @_; }
+sub scenario_done { my ( $self, $scenario, $dataset ) = @_; }
 
 =head2 step
 
@@ -71,14 +77,8 @@ a L<Test::BDD::Cucumber::Model::Result> object.
 
 =cut
 
-sub step {
-    my ( $self, $context ) = @_;
-}
-
-sub step_done {
-    my ($self, $context, $result) = @_;
-
-}
+sub step      { my ( $self, $context ) = @_; }
+sub step_done { my ($self, $context, $result) = @_; }
 
 =head1 AUTHOR
 

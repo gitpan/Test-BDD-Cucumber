@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Harness::TermColor;
 BEGIN {
-  $Test::BDD::Cucumber::Harness::TermColor::VERSION = '0.05';
+  $Test::BDD::Cucumber::Harness::TermColor::VERSION = '0.06';
 }
 
 =head1 NAME
@@ -9,12 +9,19 @@ Test::BDD::Cucumber::Harness::TermColor - Prints colorized text to the screen
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 DESCRIPTION
 
 A L<Test::BDD::Cucumber::Harness> subclass that prints test output, colorized,
 to the terminal.
+
+=head1 METHODS
+
+=head2 result
+
+Returns a collective view on the passing status of all steps run so far,
+as a L<Test::BDD::Cucumber::Model::Resullt> object.
 
 =cut
 
@@ -23,16 +30,27 @@ use warnings;
 use Moose;
 use Term::ANSIColor;
 use Test::BDD::Cucumber::Util;
+use Test::BDD::Cucumber::Model::Result;
 
 extends 'Test::BDD::Cucumber::Harness';
+
+my @results;
+
+sub result {
+    my $self = shift;
+    return Test::BDD::Cucumber::Model::Result->from_children( @results );
+}
 
 my $margin = 2;
 if ( $margin > 1 ) {
     print "\n" x ( $margin - 1 );
 }
 
+my $current_feature;
+
 sub feature {
     my ( $self, $feature ) = @_;
+    $current_feature = $feature;
     $self->_display({
         indent    => 0,
         color     => 'bright_white',
@@ -46,8 +64,7 @@ sub feature_done { print "\n"; }
 
 sub scenario {
     my ( $self, $scenario, $dataset, $longest ) = @_;
-    my $text = $scenario->background ?
-        "Background:" :
+    my $text =
         "Scenario: " . color('bright_blue') . ($scenario->name || '' );
 
     $self->_display({
@@ -63,9 +80,9 @@ sub scenario {
 sub scenario_done { print "\n"; }
 
 sub step {}
-
 sub step_done {
     my ($self, $context, $result ) = @_;
+    push(@results, $result);
 
     my $color;
     my $follow_up = [];

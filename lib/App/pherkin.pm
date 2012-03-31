@@ -1,6 +1,6 @@
 package App::pherkin;
 BEGIN {
-  $App::pherkin::VERSION = '0.05';
+  $App::pherkin::VERSION = '0.06';
 }
 
 use strict;
@@ -13,7 +13,7 @@ App::pherkin - Run Cucumber tests from the command line
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 
@@ -43,6 +43,8 @@ The C<App::pherkin> class, which is what the C<pherkin> command uses, makes
 use of the C<run()> method, which accepts currently a single path as a string,
 or nothing.
 
+Returns a L<Test::BDD::Cucumber::Model::Result> object for all steps run.
+
 =cut
 
 sub run {
@@ -50,10 +52,12 @@ sub run {
     my ( $executor, @features ) = Test::BDD::Cucumber::Loader->load(
         $arguments[0] || './features/'
     );
-    warn "No feature files found\n" unless @features;
+    die "No feature files found" unless @features;
 
     my $harness  = Test::BDD::Cucumber::Harness::TermColor->new();
     $executor->execute( $_, $harness ) for @features;
+
+    return $harness->result;
 }
 
 =head1 AUTHOR

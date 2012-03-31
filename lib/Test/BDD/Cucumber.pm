@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber;
 BEGIN {
-  $Test::BDD::Cucumber::VERSION = '0.05';
+  $Test::BDD::Cucumber::VERSION = '0.06';
 }
 
 =head1 NAME
@@ -9,11 +9,15 @@ Test::BDD::Cucumber - Feature-complete Cucumber-style testing in Perl
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 DESCRIPTION
 
 A sane and complete Cucumber implementation in Perl
+
+=head1 QUICK LINKS
+
+L<Cucumber on Perl on MetaCPAN|https://metacpan.org/release/Test-BDD-Cucumber>
 
 =head1 WARNING
 
@@ -37,7 +41,7 @@ reading our short and crunchy L<Tutorial|Test::BDD::Cucumber::Manual::Tutorial>.
 If you B<already understand Cucumber>, and just want to get started then you
 should read the L<Step-writing quick-start
 guide|Test::BDD::Cucumber::Manual::Steps>, the documentation for our
-command-line tool L<App::Pherkin>, and L<How to integrate with
+command-line tool L<App::pherkin>, and L<How to integrate with
 Test::Builder|Test::BDD::Cucumber::Manual::Integration>.
 
 If you B<want to extend or integrated Test::BDD::Cucumber> then you'd probably

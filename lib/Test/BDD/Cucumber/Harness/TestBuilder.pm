@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Harness::TestBuilder;
 BEGIN {
-  $Test::BDD::Cucumber::Harness::TestBuilder::VERSION = '0.05';
+  $Test::BDD::Cucumber::Harness::TestBuilder::VERSION = '0.06';
 }
 
 =head1 NAME
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::Harness::TestBuilder - Pipes step output via Test::Builder
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 DESCRIPTION
 
@@ -40,11 +40,7 @@ sub feature {
 
 sub scenario {
     my ( $self, $scenario, $dataset ) = @_;
-    if ( $scenario->background ) {
-        note "$li${ni}Background:";
-    } else {
-        note "$li${ni}Scenario: " . ($scenario->name || '');
-    }
+    note "$li${ni}Scenario: " . ($scenario->name || '');
 }
 sub scenario_done { note ""; }
 

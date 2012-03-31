@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Parser;
 BEGIN {
-  $Test::BDD::Cucumber::Parser::VERSION = '0.05';
+  $Test::BDD::Cucumber::Parser::VERSION = '0.06';
 }
 
 =head1 NAME
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::Parser - Parse Feature files
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 DESCRIPTION
 
@@ -145,7 +145,11 @@ sub _extract_scenarios {
 			# Attempt to populate it
 			@lines = $self->_extract_steps( $feature, $scenario, @lines );
 
-			push( @{ $feature->scenarios }, $scenario );
+			if ( $type eq 'Background' ) {
+				$feature->background( $scenario );
+			} else {
+				push( @{ $feature->scenarios }, $scenario );
+			}
 		} else {
 			ouch 'parse_error', "Malformed scenario line", $line;
 		}

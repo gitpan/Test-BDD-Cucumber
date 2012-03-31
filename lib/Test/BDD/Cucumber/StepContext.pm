@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::StepContext;
 BEGIN {
-  $Test::BDD::Cucumber::StepContext::VERSION = '0.05';
+  $Test::BDD::Cucumber::StepContext::VERSION = '0.06';
 }
 use Moose;
 
@@ -10,7 +10,7 @@ Test::BDD::Cucumber::StepContext - Data made available to step definitions
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 DESCRIPTION
 
@@ -89,6 +89,17 @@ C<$1>, C<$2> etc as appropriate.
 =cut
 
 has 'matches'  => ( is => 'rw', isa => 'ArrayRef' );
+
+=head1 METHODS
+
+=head2 background
+
+Boolean for "is this step being run as part of the background section?".
+Currently implemented by asking the linked Scenario object...
+
+=cut
+
+sub background { my $self = shift; return $self->scenario->background }
 
 =head1 AUTHOR
 

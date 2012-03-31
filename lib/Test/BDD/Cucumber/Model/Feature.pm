@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Model::Feature;
 BEGIN {
-  $Test::BDD::Cucumber::Model::Feature::VERSION = '0.05';
+  $Test::BDD::Cucumber::Model::Feature::VERSION = '0.06';
 }
 
 use Moose;
@@ -11,7 +11,7 @@ Test::BDD::Cucumber::Model::Document - Model to represent a feature file, parsed
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 DESCRIPTION
 
@@ -53,6 +53,15 @@ The corresponding L<Test::BDD::Cucumber::Model::Document> object
 
 has 'document'   => ( is => 'rw', isa => 'Test::BDD::Cucumber::Model::Document' );
 
+=head2 background
+
+The L<Test::BDD::Cucumber::Model::Scenario> object that was marked as the
+background section.
+
+=cut
+
+has 'background' => ( is => 'rw', isa => 'Test::BDD::Cucumber::Model::Scenario' );
+
 =head2 scenarios
 
 An arrayref of the L<Test::BDD::Cucumber::Model::Scenario> objects that
@@ -60,7 +69,7 @@ constitute the test.
 
 =cut
 
-has 'scenarios'  => ( is => 'rw', isa => 'ArrayRef[Test::BDD::Cucumber::Model::Scenario]',
+has 'scenarios' => ( is => 'rw', isa => 'ArrayRef[Test::BDD::Cucumber::Model::Scenario]',
 	default => sub {[]} );
 
 =head1 AUTHOR
