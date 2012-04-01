@@ -22,9 +22,11 @@ my %WriteMakefileArgs = (
   'LICENSE' => 'perl',
   'NAME' => 'Test::BDD::Cucumber',
   'PREREQ_PM' => {
+    'Clone::Fast' => '0',
     'File::Find::Rule' => '0',
     'File::Slurp' => '0',
     'FindBin::libs' => '0',
+    'List::MoreUtils' => '0',
     'List::Util' => '0',
     'Method::Signatures' => '0',
     'Moose' => '0',
@@ -37,7 +39,7 @@ my %WriteMakefileArgs = (
     'Test::More' => '0',
     'YAML::Syck' => '0'
   },
-  'VERSION' => '0.06',
+  'VERSION' => '0.07',
   'test' => {
     'TESTS' => 't/*.t'
   }

@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Model::Feature;
 BEGIN {
-  $Test::BDD::Cucumber::Model::Feature::VERSION = '0.06';
+  $Test::BDD::Cucumber::Model::Feature::VERSION = '0.07';
 }
 
 use Moose;
@@ -11,7 +11,7 @@ Test::BDD::Cucumber::Model::Document - Model to represent a feature file, parsed
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 DESCRIPTION
 
@@ -71,6 +71,15 @@ constitute the test.
 
 has 'scenarios' => ( is => 'rw', isa => 'ArrayRef[Test::BDD::Cucumber::Model::Scenario]',
 	default => sub {[]} );
+
+=head2 tags
+
+Tags that the feature has been tagged with, and will pass on to its
+Scenarios.
+
+=cut
+
+has 'tags' => ( is => 'rw', isa => 'ArrayRef[Str]', default => sub {[]} );
 
 =head1 AUTHOR
 

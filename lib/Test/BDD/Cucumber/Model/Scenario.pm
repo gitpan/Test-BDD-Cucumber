@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Model::Scenario;
 BEGIN {
-  $Test::BDD::Cucumber::Model::Scenario::VERSION = '0.06';
+  $Test::BDD::Cucumber::Model::Scenario::VERSION = '0.07';
 }
 
 use Moose;
@@ -11,7 +11,7 @@ Test::BDD::Cucumber::Model::Scenario - Model to represent a scenario
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 DESCRIPTION
 
@@ -59,6 +59,15 @@ the C<Scenario> keyword is.
 =cut
 
 has 'line'       => ( is => 'rw', isa => 'Test::BDD::Cucumber::Model::Line' );
+
+=head2 tags
+
+Tags that the scenario has been tagged with, and has inherited from its
+feature.
+
+=cut
+
+has 'tags' => ( is => 'rw', isa => 'ArrayRef[Str]', default => sub {[]} );
 
 =head1 AUTHOR
 

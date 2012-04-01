@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Loader;
 BEGIN {
-  $Test::BDD::Cucumber::Loader::VERSION = '0.06';
+  $Test::BDD::Cucumber::Loader::VERSION = '0.07';
 }
 
 =head1 NAME
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::Loader - Simplify loading of Step Definition and feature fi
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 DESCRIPTION
 
@@ -27,7 +27,6 @@ Definition files loaded, and a list of L<Test::BDD::Model::Feature> objects.
 use strict;
 use warnings;
 
-use Ouch;
 use Path::Class;
 use File::Find::Rule;
 
@@ -59,23 +58,7 @@ sub load {
     # Grab the feature files
     my @features = map {
         my $file = $_;
-        my $feature = eval { Test::BDD::Cucumber::Parser->parse_file( $file ) };
-        unless ( $feature ) {
-            my $failure = (
-                # Was there an error?
-                $@ ? (
-                    # Was it returned by Ouch?
-                    ref( $@ ) ? (
-                        $@->code . ': ' .
-                        $@->message . ': ' .
-                        $@->data->debug_summary
-                    # Error not returned by Ouch
-                    ) : "Unhandled error: $@"
-                # No error found!
-                ) : "Unknown error"
-            );
-            ouch 'failed_feature_load', "Unable to load $file: $failure";
-        }
+        my $feature = Test::BDD::Cucumber::Parser->parse_file( $file );
     } ( $file ? ($file.'') : File::Find::Rule
         ->file()
         ->name( '*.feature' )

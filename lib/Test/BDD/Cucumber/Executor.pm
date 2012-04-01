@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Executor;
 BEGIN {
-  $Test::BDD::Cucumber::Executor::VERSION = '0.06';
+  $Test::BDD::Cucumber::Executor::VERSION = '0.07';
 }
 
 =head1 NAME
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::Executor - Run through Feature and Harness objects
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 DESCRIPTION
 
@@ -66,8 +66,10 @@ sub add_steps {
 
 =head2 execute
 
-Execute accepts a feature and a harness object, and for each sub-scenario,
-runs C<execute_scenario()>
+Execute accepts a feature object, a harness object, and an optional
+L<Test::BDD::Cucumber::TagSpec> object and for each scenario in the
+feature which meets the tag requirements (or all of them, if you
+haven't specified one), runs C<execute_scenario>.
 
 =cut
 

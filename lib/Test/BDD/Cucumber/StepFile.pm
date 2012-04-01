@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::StepFile;
 BEGIN {
-  $Test::BDD::Cucumber::StepFile::VERSION = '0.06';
+  $Test::BDD::Cucumber::StepFile::VERSION = '0.07';
 }
 
 =head1 NAME
@@ -9,14 +9,13 @@ Test::BDD::Cucumber::StepFile - Functions for creating and loading Step Definiti
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =cut
 
 use strict;
 use warnings;
 use File::Find;
-use Ouch;
 
 require Exporter;
 our @ISA = qw(Exporter);
@@ -86,12 +85,10 @@ defined in it, of the form:
 
 sub load {
     my ( $class, $filename ) = @_;
-
     {
         local @definitions;
         do $filename;
-        ouch 'step_compilation', "Step file [$filename] failed to load: $@"
-            if $@;
+        die "Step file [$filename] failed to load: $@" if $@;
         return @definitions;
     }
 

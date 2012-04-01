@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Harness::Data;
 BEGIN {
-  $Test::BDD::Cucumber::Harness::Data::VERSION = '0.06';
+  $Test::BDD::Cucumber::Harness::Data::VERSION = '0.07';
 }
 
 =head1 NAME
@@ -8,7 +8,7 @@ BEGIN {
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 Test::BDD::Cucumber::Harness::Data - Builds up an internal data representation
 of test passes / failures
 

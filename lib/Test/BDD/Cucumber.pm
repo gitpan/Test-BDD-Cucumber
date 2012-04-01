@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber;
 BEGIN {
-  $Test::BDD::Cucumber::VERSION = '0.06';
+  $Test::BDD::Cucumber::VERSION = '0.07';
 }
 
 =head1 NAME
@@ -9,7 +9,7 @@ Test::BDD::Cucumber - Feature-complete Cucumber-style testing in Perl
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 DESCRIPTION
 
