@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Harness::TermColor;
-BEGIN {
-  $Test::BDD::Cucumber::Harness::TermColor::VERSION = '0.07';
+{
+  $Test::BDD::Cucumber::Harness::TermColor::VERSION = '0.08';
 }
 
 =head1 NAME
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::Harness::TermColor - Prints colorized text to the screen
 
 =head1 VERSION
 
-version 0.07
+version 0.08
 
 =head1 DESCRIPTION
 
@@ -21,7 +21,7 @@ to the terminal.
 =head2 result
 
 Returns a collective view on the passing status of all steps run so far,
-as a L<Test::BDD::Cucumber::Model::Resullt> object.
+as a L<Test::BDD::Cucumber::Model::Result> object.
 
 =cut
 

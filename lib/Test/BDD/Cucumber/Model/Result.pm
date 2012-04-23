@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Model::Result;
-BEGIN {
-  $Test::BDD::Cucumber::Model::Result::VERSION = '0.07';
+{
+  $Test::BDD::Cucumber::Model::Result::VERSION = '0.08';
 }
 
 =head1 NAME
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::Model::Result - Encapsulates a result state
 
 =head1 VERSION
 
-version 0.07
+version 0.08
 
 =head1 DESCRIPTION
 

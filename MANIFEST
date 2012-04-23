@@ -6,8 +6,6 @@ Makefile.PL
 README
 README.pod
 TODO
-'Todo List (Autosaved).oo3/contents.xml'
-'Todo List.oo3/contents.xml'
 bin/pherkin
 dist.ini
 examples/calculator/features/basic.feature

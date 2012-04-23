@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Executor;
-BEGIN {
-  $Test::BDD::Cucumber::Executor::VERSION = '0.07';
+{
+  $Test::BDD::Cucumber::Executor::VERSION = '0.08';
 }
 
 =head1 NAME
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::Executor - Run through Feature and Harness objects
 
 =head1 VERSION
 
-version 0.07
+version 0.08
 
 =head1 DESCRIPTION
 
