@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Model::TagSpec;
-{
-  $Test::BDD::Cucumber::Model::TagSpec::VERSION = '0.08';
+BEGIN {
+  $Test::BDD::Cucumber::Model::TagSpec::VERSION = '0.09';
 }
 
 =head1 NAME
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::Model::TagSpec - Encapsulates tag selectors
 
 =head1 VERSION
 
-version 0.08
+version 0.09
 
 =head1 DESCRIPTION
 

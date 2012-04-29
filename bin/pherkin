@@ -1,5 +1,43 @@
 #!/usr/bin/env perl
 
+=head1 NAME
+
+pherkin - Execute tests written using Test::BDD::Cucumber
+
+=head1 VERSION
+
+version 0.09
+
+=head1 SYNOPSIS
+
+ pherkin
+ pherkin some/path/features/
+
+=head1 DESCRIPTION
+
+C<pherkin> accepts a single argument of a directory name, defaulting to
+C<./features/> if none is specified. This directory is searched for feature
+files (any file matching C<*.feature>) and step definition files (any file
+matching C<*_steps.pl>). The step definitions are loaded, and then the features
+executed.
+
+Steps that pass are printed in green, those that fail in red, and those for
+which there is no step definition - or that are skipped as the result of a
+previous failure - as yellow.
+
+C<pherkin> will exit with a non-zero status if (and only if) the overall result
+is considered to be failing.
+
+=head1 AUTHOR
+
+Peter Sergeant C<pete@clueball.com>
+
+=head1 LICENSE
+
+Copyright 2012, Peter Sergeant; Licensed under the same terms as Perl
+
+=cut
+
 # See App::pherkin for documentation
 use strict;
 use warnings;

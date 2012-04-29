@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber;
-{
-  $Test::BDD::Cucumber::VERSION = '0.08';
+BEGIN {
+  $Test::BDD::Cucumber::VERSION = '0.09';
 }
 
 =head1 NAME
@@ -9,7 +9,7 @@ Test::BDD::Cucumber - Feature-complete Cucumber-style testing in Perl
 
 =head1 VERSION
 
-version 0.08
+version 0.09
 
 =head1 DESCRIPTION
 
@@ -68,7 +68,7 @@ in the very near future:
 
 =item * Placeholders in pystrings is broken
 
-=item * Explicit Step Outline notation doesn't work (although step outlines are explictly supported)
+=item * Explicit Step Outline notation doesn't work (although step outlines are explicitly supported)
 
 =item * Unicode support is probably a bit ropey
 

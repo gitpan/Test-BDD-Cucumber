@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::StepContext;
-{
-  $Test::BDD::Cucumber::StepContext::VERSION = '0.08';
+BEGIN {
+  $Test::BDD::Cucumber::StepContext::VERSION = '0.09';
 }
 use Moose;
 
@@ -10,7 +10,7 @@ Test::BDD::Cucumber::StepContext - Data made available to step definitions
 
 =head1 VERSION
 
-version 0.08
+version 0.09
 
 =head1 DESCRIPTION
 
