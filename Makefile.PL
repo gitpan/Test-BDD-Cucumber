@@ -4,44 +4,44 @@ use warnings;
 
 
 
-use ExtUtils::MakeMaker 6.31;
+use ExtUtils::MakeMaker 6.30;
 
 
 
 my %WriteMakefileArgs = (
-  'ABSTRACT' => 'Feature-complete Cucumber-style testing in Perl',
-  'AUTHOR' => '[\'Peter Sergeant <pete@clueball.com>\']',
-  'BUILD_REQUIRES' => {},
-  'CONFIGURE_REQUIRES' => {
-    'ExtUtils::MakeMaker' => '6.31'
+  "ABSTRACT" => "Feature-complete Cucumber-style testing in Perl",
+  "AUTHOR" => "['Peter Sergeant <pete\@clueball.com>']",
+  "BUILD_REQUIRES" => {},
+  "CONFIGURE_REQUIRES" => {
+    "ExtUtils::MakeMaker" => "6.30"
   },
-  'DISTNAME' => 'Test-BDD-Cucumber',
-  'EXE_FILES' => [
-    'bin/pherkin'
+  "DISTNAME" => "Test-BDD-Cucumber",
+  "EXE_FILES" => [
+    "bin/pherkin"
   ],
-  'LICENSE' => 'perl',
-  'NAME' => 'Test::BDD::Cucumber',
-  'PREREQ_PM' => {
-    'Clone::Fast' => '0',
-    'File::Find::Rule' => '0',
-    'File::Slurp' => '0',
-    'FindBin::libs' => '0',
-    'List::MoreUtils' => '0',
-    'List::Util' => '0',
-    'Method::Signatures' => '0',
-    'Moose' => '0',
-    'Ouch' => '0',
-    'Path::Class' => '0',
-    'Storable' => '0',
-    'Term::ANSIColor' => '0',
-    'Test::Builder' => '0',
-    'Test::Differences' => '0',
-    'Test::More' => '0',
-    'YAML::Syck' => '0'
+  "LICENSE" => "perl",
+  "NAME" => "Test::BDD::Cucumber",
+  "PREREQ_PM" => {
+    "Clone" => 0,
+    "File::Find::Rule" => 0,
+    "File::Slurp" => 0,
+    "FindBin::libs" => 0,
+    "List::MoreUtils" => 0,
+    "List::Util" => 0,
+    "Method::Signatures" => 0,
+    "Moose" => 0,
+    "Ouch" => 0,
+    "Path::Class" => 0,
+    "Storable" => 0,
+    "Term::ANSIColor" => 0,
+    "Test::Builder" => 0,
+    "Test::Differences" => 0,
+    "Test::More" => 0,
+    "YAML::Syck" => 0
   },
-  'VERSION' => '0.09',
-  'test' => {
-    'TESTS' => 't/*.t'
+  "VERSION" => "0.10",
+  "test" => {
+    "TESTS" => "t/*.t"
   }
 );
 

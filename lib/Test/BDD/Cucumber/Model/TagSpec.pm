@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Model::TagSpec;
-BEGIN {
-  $Test::BDD::Cucumber::Model::TagSpec::VERSION = '0.09';
+{
+  $Test::BDD::Cucumber::Model::TagSpec::VERSION = '0.10';
 }
 
 =head1 NAME
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::Model::TagSpec - Encapsulates tag selectors
 
 =head1 VERSION
 
-version 0.09
+version 0.10
 
 =head1 DESCRIPTION
 
@@ -21,7 +21,7 @@ way.
 use strict;
 use warnings;
 use Moose;
-use Clone::Fast qw( clone );
+use Clone qw/clone/;
 
 =head1 OVERVIEW
 
