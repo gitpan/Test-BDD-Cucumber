@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Harness::Data;
-{
-  $Test::BDD::Cucumber::Harness::Data::VERSION = '0.10';
+BEGIN {
+  $Test::BDD::Cucumber::Harness::Data::VERSION = '0.11';
 }
 
 =head1 NAME
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::Harness::Data - Builds up an internal data representation o
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =head1 DESCRIPTION
 

@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Harness::TestBuilder;
-{
-  $Test::BDD::Cucumber::Harness::TestBuilder::VERSION = '0.10';
+BEGIN {
+  $Test::BDD::Cucumber::Harness::TestBuilder::VERSION = '0.11';
 }
 
 =head1 NAME
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::Harness::TestBuilder - Pipes step output via Test::Builder
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =head1 DESCRIPTION
 

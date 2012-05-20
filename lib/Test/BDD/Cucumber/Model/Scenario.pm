@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Model::Scenario;
-{
-  $Test::BDD::Cucumber::Model::Scenario::VERSION = '0.10';
+BEGIN {
+  $Test::BDD::Cucumber::Model::Scenario::VERSION = '0.11';
 }
 
 use Moose;
@@ -11,7 +11,7 @@ Test::BDD::Cucumber::Model::Scenario - Model to represent a scenario
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =head1 DESCRIPTION
 
