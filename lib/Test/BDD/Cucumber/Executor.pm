@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Executor;
 BEGIN {
-  $Test::BDD::Cucumber::Executor::VERSION = '0.11';
+  $Test::BDD::Cucumber::Executor::VERSION = '0.12';
 }
 
 =head1 NAME
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::Executor - Run through Feature and Harness objects
 
 =head1 VERSION
 
-version 0.11
+version 0.12
 
 =head1 DESCRIPTION
 
@@ -74,14 +74,22 @@ haven't specified one), runs C<execute_scenario>.
 =cut
 
 sub execute {
-    my ( $self, $feature, $harness ) = @_;
+    my ( $self, $feature, $harness, $tag_spec ) = @_;
     my $feature_stash = {};
 
     $harness->feature( $feature );
     my @background = (
         $feature->background ? ( background => $feature->background ) : () );
 
-    for my $scenario ( @{ $feature->scenarios } ) {
+    # Get all scenarios
+    my @scenarios = @{ $feature->scenarios() };
+
+    # Filter them by the tag spec, if we have one
+    if ( defined $tag_spec ) {
+        @scenarios = $tag_spec->filter( @scenarios );
+    }
+
+    for my $scenario ( @scenarios ) {
 
         # Execute the scenario itself
         $self->execute_scenario({
