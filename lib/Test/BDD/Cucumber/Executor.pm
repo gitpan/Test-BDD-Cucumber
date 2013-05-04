@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Executor;
 BEGIN {
-  $Test::BDD::Cucumber::Executor::VERSION = '0.13';
+  $Test::BDD::Cucumber::Executor::VERSION = '0.14';
 }
 
 =head1 NAME
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::Executor - Run through Feature and Harness objects
 
 =head1 VERSION
 
-version 0.13
+version 0.14
 
 =head1 DESCRIPTION
 
@@ -302,25 +302,7 @@ sub dispatch {
             # Close up the Test::Builder object
             $tb_return->{'builder'}->done_testing();
 
-            # Make a note of test status
-            my %results = map {
-                if ( $_->{'ok'} ) {
-                    if ( $_->{'type'} eq 'todo' ||  $_->{'type'} eq 'todo_skip' ) {
-                        ( todo => 1)
-                    } else {
-                        ( pass => 1 )
-                    }
-                } else {
-                    ( fail => 1 )
-                }
-            } $tb_return->{'builder'}->details;
-
-            # Turn that in to a Result status
-            my $status = $results{'fail'} ?
-                'failing' :
-                $results{'todo'} ?
-                    'pending' :
-                    'passing';
+            my $status = $self->_test_status($tb_return->{builder});
 
             # Create the result object
             $result = Test::BDD::Cucumber::Model::Result->new({
@@ -336,6 +318,59 @@ sub dispatch {
         return $result;
     }
 }
+
+
+sub _test_status {
+    my $self    = shift;
+    my $builder = shift;
+
+    my $results = $builder->can("history") ? $self->_test_status_from_history($builder)
+                                           : $self->_test_status_from_details($builder);
+
+
+    # Turn that in to a Result status
+    return $results->{'fail'} ? 'failing' :
+           $results->{'todo'} ? 'pending' :
+                                'passing' ;
+}
+
+sub _test_status_from_details {
+    my $self = shift;
+    my $builder = shift;
+
+    # Make a note of test status
+    my %results = map {
+        if ( $_->{'ok'} ) {
+            if ( $_->{'type'} eq 'todo' ||  $_->{'type'} eq 'todo_skip' ) {
+                ( todo => 1)
+            } else {
+                ( pass => 1 )
+            }
+        } else {
+            ( fail => 1 )
+        }
+    } $builder->details;
+
+    return \%results;
+}
+
+
+sub _test_status_from_history {
+    my $self = shift;
+    my $builder = shift;
+
+    my $history = $builder->history;
+
+    my %results;
+    $results{todo} = $history->todo_count ? 1 : 0;
+    $results{fail} = !$history->test_was_successful;
+    $results{pass} = $history->pass_count ? 1 : 0;
+
+    return \%results;
+}
+
+
+
 
 =head2 skip_step
 
