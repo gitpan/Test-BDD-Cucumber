@@ -37,9 +37,10 @@ lib/Test/BDD/Cucumber/StepContext.pm
 lib/Test/BDD/Cucumber/StepFile.pm
 lib/Test/BDD/Cucumber/Util.pm
 script/make_corpus.pl
-t/100_background_sections.t
-t/110_tag_parsing.t
-t/120_tag_matching.t
+t/210_background_sections.t
+t/220_tag_parsing.t
+t/230_tag_matching.t
+t/310_auto_corpus.t
 t/800_regressions_010_too_few_features.t
 t/900_run_cucumber_tests.t
 t/auto_corpus/calculator.feature_corpus

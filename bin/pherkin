@@ -6,7 +6,7 @@ pherkin - Execute tests written using Test::BDD::Cucumber
 
 =head1 VERSION
 
-version 0.12
+version 0.13
 
 =head1 SYNOPSIS
 
@@ -27,6 +27,12 @@ previous failure - as yellow.
 
 C<pherkin> will exit with a non-zero status if (and only if) the overall result
 is considered to be failing.
+
+=head1 OPTIONS
+
+ -l, --lib   Add 'lib' to @INC
+ -b, --blib  Add 'blib/lib' and 'blib/arch' to @INC
+ -I [dir]    Add given directory to @INC
 
 =head1 AUTHOR
 

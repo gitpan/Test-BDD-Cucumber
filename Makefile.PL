@@ -26,6 +26,7 @@ my %WriteMakefileArgs = (
     'File::Find::Rule' => '0',
     'File::Slurp' => '0',
     'FindBin::libs' => '0',
+    'Getopt::Long' => '0',
     'List::MoreUtils' => '0',
     'List::Util' => '0',
     'Method::Signatures' => '0',
@@ -39,7 +40,7 @@ my %WriteMakefileArgs = (
     'Test::More' => '0',
     'YAML::Syck' => '0'
   },
-  'VERSION' => '0.12',
+  'VERSION' => '0.13',
   'test' => {
     'TESTS' => 't/*.t'
   }

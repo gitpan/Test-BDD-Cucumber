@@ -1,11 +1,12 @@
 package App::pherkin;
 BEGIN {
-  $App::pherkin::VERSION = '0.12';
+  $App::pherkin::VERSION = '0.13';
 }
 
 use strict;
 use warnings;
 use FindBin::libs;
+use Getopt::Long;
 
 =head1 NAME
 
@@ -13,7 +14,7 @@ App::pherkin - Run Cucumber tests from the command line
 
 =head1 VERSION
 
-version 0.12
+version 0.13
 
 =head1 SYNOPSIS
 
@@ -49,6 +50,9 @@ Returns a L<Test::BDD::Cucumber::Model::Result> object for all steps run.
 
 sub run {
     my ( $class, @arguments ) = @_;
+
+    @arguments = $class->_process_arguments(@arguments);
+
     my ( $executor, @features ) = Test::BDD::Cucumber::Loader->load(
         $arguments[0] || './features/'
     );
@@ -58,6 +62,27 @@ sub run {
     $executor->execute( $_, $harness ) for @features;
 
     return $harness->result;
+}
+
+sub _process_arguments {
+    my ( $class, @args ) = @_;
+    local @ARGV = @args;
+
+    # Allow -Ilib, -bl
+    Getopt::Long::Configure('bundling');
+
+    my $includes = [];
+    GetOptions(
+        'I=s@'   => \$includes,
+        'l|lib'  => \(my $add_lib),
+        'b|blib' => \(my $add_blib),
+    );
+    unshift @$includes, 'lib'                   if $add_lib;
+    unshift @$includes, 'blib/lib', 'blib/arch' if $add_blib;
+
+    lib->import(@$includes) if @$includes;
+
+    return @ARGV;
 }
 
 =head1 AUTHOR
