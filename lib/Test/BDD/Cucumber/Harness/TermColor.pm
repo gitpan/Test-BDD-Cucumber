@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Harness::TermColor;
 BEGIN {
-  $Test::BDD::Cucumber::Harness::TermColor::VERSION = '0.14';
+  $Test::BDD::Cucumber::Harness::TermColor::VERSION = '0.15';
 }
 
 =head1 NAME
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::Harness::TermColor - Prints colorized text to the screen
 
 =head1 VERSION
 
-version 0.14
+version 0.15
 
 =head1 DESCRIPTION
 
@@ -17,11 +17,6 @@ A L<Test::BDD::Cucumber::Harness> subclass that prints test output, colorized,
 to the terminal.
 
 =head1 METHODS
-
-=head2 result
-
-Returns a collective view on the passing status of all steps run so far,
-as a L<Test::BDD::Cucumber::Model::Result> object.
 
 =cut
 
@@ -33,13 +28,6 @@ use Test::BDD::Cucumber::Util;
 use Test::BDD::Cucumber::Model::Result;
 
 extends 'Test::BDD::Cucumber::Harness';
-
-my @results;
-
-sub result {
-    my $self = shift;
-    return Test::BDD::Cucumber::Model::Result->from_children( @results );
-}
 
 my $margin = 2;
 if ( $margin > 1 ) {
@@ -82,7 +70,6 @@ sub scenario_done { print "\n"; }
 sub step {}
 sub step_done {
     my ($self, $context, $result ) = @_;
-    push(@results, $result);
 
     my $color;
     my $follow_up = [];
@@ -100,7 +87,7 @@ sub step_done {
     $self->_display({
         indent    => 4,
         color     => $color,
-        text      => $context->step->verb . ' ' . $context->text,
+        text      => $context->step->verb_original . ' ' . $context->text,
         highlight => 'bright_cyan',
         trailing  => 0,
         follow_up => $follow_up,

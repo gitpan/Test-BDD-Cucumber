@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Executor;
 BEGIN {
-  $Test::BDD::Cucumber::Executor::VERSION = '0.14';
+  $Test::BDD::Cucumber::Executor::VERSION = '0.15';
 }
 
 =head1 NAME
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::Executor - Run through Feature and Harness objects
 
 =head1 VERSION
 
-version 0.14
+version 0.15
 
 =head1 DESCRIPTION
 
@@ -314,6 +314,7 @@ sub dispatch {
         # Say the step is done, and return the result. Happens outside
         # the above block so that we don't have the localized harness
         # anymore...
+        $context->harness->add_result( $result );
         $context->harness->step_done( $context, $result );
         return $result;
     }

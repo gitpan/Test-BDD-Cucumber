@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Harness::TestBuilder;
 BEGIN {
-  $Test::BDD::Cucumber::Harness::TestBuilder::VERSION = '0.14';
+  $Test::BDD::Cucumber::Harness::TestBuilder::VERSION = '0.15';
 }
 
 =head1 NAME
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::Harness::TestBuilder - Pipes step output via Test::Builder
 
 =head1 VERSION
 
-version 0.14
+version 0.15
 
 =head1 DESCRIPTION
 
@@ -50,7 +50,7 @@ sub step_done {
     my ($self, $context, $result) = @_;
     my $status = $result->result;
 
-	my $step = $context->step;
+    my $step = $context->step;
     my $step_name = $si . ucfirst($step->verb_original) . ' ' .
         $context->text;
 
@@ -73,22 +73,24 @@ sub step_done {
 }
 
 sub _note_step_data {
-	my ( $self, $step ) = @_;
-	my @step_data = @{ $step->data_as_strings };
-	return unless @step_data;
+    my ( $self, $step ) = @_;
+    my @step_data = @{ $step->data_as_strings };
+    return unless @step_data;
 
-	if ( ref( $step->data ) eq 'ARRAY' ) {
-		for ( @step_data ) {
-			note( $di . $_ );
-		}
-	} else {
-		note $di . '"""';
-		for ( @step_data ) {
-			note( $di . '  ' . $_ );
-		}
-		note $di . '"""';
-	}
+    if ( ref( $step->data ) eq 'ARRAY' ) {
+        for ( @step_data ) {
+            note( $di . $_ );
+        }
+    } else {
+        note $di . '"""';
+        for ( @step_data ) {
+            note( $di . '  ' . $_ );
+        }
+        note $di . '"""';
+    }
 }
+
+sub shutdown { done_testing(); }
 
 =head1 AUTHOR
 
