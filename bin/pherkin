@@ -6,7 +6,7 @@ pherkin - Execute tests written using Test::BDD::Cucumber
 
 =head1 VERSION
 
-version 0.15
+version 0.16
 
 =head1 SYNOPSIS
 
@@ -30,10 +30,13 @@ is considered to be failing.
 
 =head1 OPTIONS
 
- -l, --lib     Add 'lib' to @INC
- -b, --blib    Add 'blib/lib' and 'blib/arch' to @INC
- -I [dir]      Add given directory to @INC
- -o, --output  Output harness to use. Default to 'TermColor'. See 'Outputs'
+ -l, --lib              Add 'lib' to @INC
+ -b, --blib             Add 'blib/lib' and 'blib/arch' to @INC
+ -I [dir]               Add given directory to @INC
+ -o, --output           Output harness to use. Default to 'TermColor'. See 'Outputs'
+ -t, --tags @tag        Run scenarios tagged with '@tag'
+ -t, --tags @tag1,@tag2 Run scenarios tagged with '@tag1' and '@tag2'
+ -t, --tags ~@tag       Run scenarios tagged without '@tag'
 
 =head1 OUTPUTS
 
@@ -59,7 +62,13 @@ use strict;
 use warnings;
 use FindBin::libs;
 
+BEGIN {
+    if ( not -t STDOUT ) {
+        $ENV{'ANSI_COLORS_DISABLED'} = 1;
+    }
+}
+
 use App::pherkin;
-my $result = App::pherkin->run( @ARGV );
+my $result = App::pherkin->new()->run( @ARGV );
 
 exit( $result->result eq 'failing' );

@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Harness;
-BEGIN {
-  $Test::BDD::Cucumber::Harness::VERSION = '0.15';
+{
+  $Test::BDD::Cucumber::Harness::VERSION = '0.16';
 }
 
 =head1 NAME
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::Harness - Base class for creating harnesses
 
 =head1 VERSION
 
-version 0.15
+version 0.16
 
 =head1 DESCRIPTION
 

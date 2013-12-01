@@ -13,6 +13,8 @@ examples/calculator/features/step_definitions/calculator_steps.pl
 examples/calculator/lib/Calculator.pm
 examples/digest/features/basic.feature
 examples/digest/features/step_definitions/basic_steps.pl
+examples/tagged-digest/features/basic.feature
+examples/tagged-digest/features/step_definitions/basic_steps.pl
 lib/App/pherkin.pm
 lib/Test/BDD/Cucumber.pm
 lib/Test/BDD/Cucumber/Executor.pm
@@ -41,6 +43,7 @@ t/210_background_sections.t
 t/220_tag_parsing.t
 t/230_tag_matching.t
 t/310_auto_corpus.t
+t/700_tag_processing.t
 t/800_regressions_010_too_few_features.t
 t/900_run_cucumber_tests.t
 t/auto_corpus/calculator.feature_corpus

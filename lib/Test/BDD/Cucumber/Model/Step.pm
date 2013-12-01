@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Model::Step;
-BEGIN {
-  $Test::BDD::Cucumber::Model::Step::VERSION = '0.15';
+{
+  $Test::BDD::Cucumber::Model::Step::VERSION = '0.16';
 }
 
 use Moose;
@@ -11,7 +11,7 @@ Test::BDD::Cucumber::Model::Step - Model to represent a step in a scenario
 
 =head1 VERSION
 
-version 0.15
+version 0.16
 
 =head1 DESCRIPTION
 
@@ -65,6 +65,15 @@ by harnesses
 
 has 'data_as_strings' => ( is => 'rw', default => sub {[]},
 	isa => 'ArrayRef[Str]' );
+
+=head2 columns
+
+If data was in a table format, then the column names will be here in the order
+they appeared.
+
+=cut
+
+has 'columns' => ( is => 'rw', isa => 'ArrayRef[Str]' );
 
 =head1 AUTHOR
 

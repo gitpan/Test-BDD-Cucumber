@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Model::Line;
-BEGIN {
-  $Test::BDD::Cucumber::Model::Line::VERSION = '0.15';
+{
+  $Test::BDD::Cucumber::Model::Line::VERSION = '0.16';
 }
 
 use Moose;
@@ -11,7 +11,7 @@ Test::BDD::Cucumber::Model::Line - Model to represent a line in a feature file
 
 =head1 VERSION
 
-version 0.15
+version 0.16
 
 =head1 DESCRIPTION
 

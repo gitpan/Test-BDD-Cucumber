@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Loader;
-BEGIN {
-  $Test::BDD::Cucumber::Loader::VERSION = '0.15';
+{
+  $Test::BDD::Cucumber::Loader::VERSION = '0.16';
 }
 
 =head1 NAME
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::Loader - Simplify loading of Step Definition and feature fi
 
 =head1 VERSION
 
-version 0.15
+version 0.16
 
 =head1 DESCRIPTION
 
@@ -35,7 +35,7 @@ use Test::BDD::Cucumber::Parser;
 use Test::BDD::Cucumber::StepFile();
 
 sub load {
-    my ( $class, $path ) = @_;
+    my ( $class, $path, $tag_scheme ) = @_;
     my $executor = Test::BDD::Cucumber::Executor->new();
 
     # Either load a feature or a directory...
@@ -58,7 +58,7 @@ sub load {
     # Grab the feature files
     my @features = map {
         my $file = $_;
-        my $feature = Test::BDD::Cucumber::Parser->parse_file( $file );
+        my $feature = Test::BDD::Cucumber::Parser->parse_file( $file, $tag_scheme );
     } ( $file ? ($file.'') : File::Find::Rule
         ->file()
         ->name( '*.feature' )

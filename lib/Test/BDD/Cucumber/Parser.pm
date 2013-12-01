@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Parser;
-BEGIN {
-  $Test::BDD::Cucumber::Parser::VERSION = '0.15';
+{
+  $Test::BDD::Cucumber::Parser::VERSION = '0.16';
 }
 
 =head1 NAME
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::Parser - Parse Feature files
 
 =head1 VERSION
 
-version 0.15
+version 0.16
 
 =head1 DESCRIPTION
 
@@ -35,12 +35,14 @@ L<Test::BDD::Cucumber::Model::Feature> object on success.
 use strict;
 use warnings;
 use Ouch;
+use Data::Dumper;
 
 use File::Slurp;
 use Test::BDD::Cucumber::Model::Document;
 use Test::BDD::Cucumber::Model::Feature;
 use Test::BDD::Cucumber::Model::Scenario;
 use Test::BDD::Cucumber::Model::Step;
+use Test::BDD::Cucumber::Model::TagSpec;
 
 # https://github.com/cucumber/cucumber/wiki/Multiline-Step-Arguments
 # https://github.com/cucumber/cucumber/wiki/Scenario-outlines
@@ -53,15 +55,15 @@ sub parse_string {
 }
 
 sub parse_file   {
-	my ( $self, $string ) = @_;
+	my ( $self, $string, $tag_scheme ) = @_;
 	return $self->_construct( Test::BDD::Cucumber::Model::Document->new({
 		content  => scalar( read_file $string ),
 		filename => $string
-	}) );
+	}), $tag_scheme );
 }
 
 sub _construct {
-	my ( $self, $document ) = @_;
+	my ( $self, $document, $tag_scheme ) = @_;
 
 	my $feature = Test::BDD::Cucumber::Model::Feature->new({ document => $document });
     my @lines = $self->_remove_next_blanks( @{ $document->lines } );
@@ -279,6 +281,7 @@ sub _extract_table {
 		if ( @columns ) {
 			ouch 'parse_error', "Inconsistent number of rows in table", $line
 				unless @rows == @columns;
+            $target->columns( [ @columns ] ) if $target->can('columns');
 			my $i = 0;
 			my %data_hash = map { $columns[$i++] => $_ } @rows;
 			push( @$data, \%data_hash );

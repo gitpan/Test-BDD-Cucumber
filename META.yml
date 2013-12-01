@@ -1,12 +1,12 @@
 ---
 abstract: 'Feature-complete Cucumber-style testing in Perl'
 author:
-  - "['Peter Sergeant <pete@clueball.com>']"
+  - "['Peter Sergeant <pete@clueball.com>','Ben Rogers <ben@bdr.org>']"
 build_requires: {}
 configure_requires:
-  ExtUtils::MakeMaker: 6.31
+  ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.200004, CPAN::Meta::Converter version 2.112150'
+generated_by: 'Dist::Zilla version 5.006, CPAN::Meta::Converter version 2.132830'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -30,4 +30,4 @@ requires:
   Test::Differences: 0
   Test::More: 0
   YAML::Syck: 0
-version: 0.15
+version: 0.16
