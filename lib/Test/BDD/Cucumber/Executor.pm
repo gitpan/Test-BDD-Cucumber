@@ -1,6 +1,6 @@
 package Test::BDD::Cucumber::Executor;
 {
-  $Test::BDD::Cucumber::Executor::VERSION = '0.16';
+  $Test::BDD::Cucumber::Executor::VERSION = '0.17';
 }
 
 =head1 NAME
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::Executor - Run through Feature and Harness objects
 
 =head1 VERSION
 
-version 0.16
+version 0.17
 
 =head1 DESCRIPTION
 
@@ -177,7 +177,6 @@ sub execute_scenario {
         data    => '',
         stash   => {
             feature  => $feature_stash,
-            scenario => $scenario_stash,
             step     => {},
         },
     
@@ -192,6 +191,8 @@ sub execute_scenario {
     );
 
     foreach my $dataset ( @datasets ) {
+        my $scenario_stash = $incoming_scenario_stash || {};
+        $context_defaults{stash}->{scenario} = $scenario_stash;
 
         # OK, back to the normal execution
         $harness->$harness_start( $outline, $dataset,
