@@ -1,7 +1,5 @@
 package Test::BDD::Cucumber::StepContext;
-{
-  $Test::BDD::Cucumber::StepContext::VERSION = '0.17';
-}
+$Test::BDD::Cucumber::StepContext::VERSION = '0.18';
 use Moose;
 
 use List::Util qw( first );
@@ -12,7 +10,7 @@ Test::BDD::Cucumber::StepContext - Data made available to step definitions
 
 =head1 VERSION
 
-version 0.17
+version 0.18
 
 =head1 DESCRIPTION
 
@@ -191,13 +189,24 @@ sub transform
     TRANSFORM:
     for my $transformer ( @{ $self->transformers } )
     {
+        # turn off this warning so undef can be set in the following regex
+        no warnings 'uninitialized';
+
         # uses the same magic as other steps
         # and puts any matches into $1, $2, etc.
         # and calls the Transform step
-        if ( $value =~ s/$transformer->[0]/$transformer->[1]->( $self )/e )
+
+        # also, if the transformer code ref returns undef, this will be coerced
+        # into an empty string, so need to mark it as something else
+        # and then turn it into proper undef
+
+        if ( $value =~ s/$transformer->[0]/
+                my $value = $transformer->[1]->( $self );
+                defined $value ? $value : '__UNDEF__'
+            /e )
         {
             # if we matched then stop processing this match
-            return $value;
+            return $value eq '__UNDEF__' ? undef : $value
         }
     }
 

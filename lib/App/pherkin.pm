@@ -1,8 +1,5 @@
 package App::pherkin;
-{
-  $App::pherkin::VERSION = '0.17';
-}
-
+$App::pherkin::VERSION = '0.18';
 use strict;
 use warnings;
 use FindBin::libs;
@@ -18,7 +15,7 @@ App::pherkin - Run Cucumber tests from the command line
 
 =head1 VERSION
 
-version 0.17
+version 0.18
 
 =head1 SYNOPSIS
 

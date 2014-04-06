@@ -1,12 +1,12 @@
 package Test::BDD::Cucumber::Manual::Tutorial
-
+$Test::BDD::Cucumber::Manual::Tutorial::VERSION = '0.18';
 =head1 NAME
 
 Test::BDD::Cucumber::Manual::Tutorial - Quick Start Guide
 
 =head1 VERSION
 
-version 0.17
+version 0.18
 
 =head1 Introduction
 
