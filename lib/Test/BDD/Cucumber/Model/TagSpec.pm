@@ -1,12 +1,12 @@
 package Test::BDD::Cucumber::Model::TagSpec;
-$Test::BDD::Cucumber::Model::TagSpec::VERSION = '0.19';
+$Test::BDD::Cucumber::Model::TagSpec::VERSION = '0.20';
 =head1 NAME
 
 Test::BDD::Cucumber::Model::TagSpec - Encapsulates tag selectors
 
 =head1 VERSION
 
-version 0.19
+version 0.20
 
 =head1 DESCRIPTION
 

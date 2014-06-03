@@ -1,12 +1,12 @@
 package Test::BDD::Cucumber::Harness::TermColor;
-$Test::BDD::Cucumber::Harness::TermColor::VERSION = '0.19';
+$Test::BDD::Cucumber::Harness::TermColor::VERSION = '0.20';
 =head1 NAME
 
 Test::BDD::Cucumber::Harness::TermColor - Prints colorized text to the screen
 
 =head1 VERSION
 
-version 0.19
+version 0.20
 
 =head1 DESCRIPTION
 

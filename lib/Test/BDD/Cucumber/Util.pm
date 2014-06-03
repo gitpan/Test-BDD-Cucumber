@@ -1,5 +1,5 @@
 package Test::BDD::Cucumber::Util;
-$Test::BDD::Cucumber::Util::VERSION = '0.19';
+$Test::BDD::Cucumber::Util::VERSION = '0.20';
 use strict;
 use warnings;
 
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::Util - Some functions used throughout the code
 
 =head1 VERSION
 
-version 0.19
+version 0.20
 
 =head1 DESCRIPTION
 

@@ -41,11 +41,12 @@ my %WriteMakefileArgs = (
     "Term::ANSIColor" => "3.00",
     "Test::Builder" => 0,
     "Test::Differences" => 0,
+    "Test::File::ShareDir" => 0,
     "Test::More" => 0,
     "YAML::Syck" => 0
   },
   "TEST_REQUIRES" => {},
-  "VERSION" => "0.19",
+  "VERSION" => "0.20",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -68,6 +69,7 @@ my %FallbackPrereqs = (
   "Term::ANSIColor" => "3.00",
   "Test::Builder" => 0,
   "Test::Differences" => 0,
+  "Test::File::ShareDir" => 0,
   "Test::More" => 0,
   "YAML::Syck" => 0
 );

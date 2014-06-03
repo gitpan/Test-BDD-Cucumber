@@ -1,12 +1,12 @@
 package Test::BDD::Cucumber::I18n;
-$Test::BDD::Cucumber::I18n::VERSION = '0.19';
+$Test::BDD::Cucumber::I18n::VERSION = '0.20';
 =head1 NAME
 
 Test::BDD::Cucumber::I18N - Internationalization
 
 =head1 VERSION
 
-version 0.19
+version 0.20
 
 =head1 DESCRIPTION
 
