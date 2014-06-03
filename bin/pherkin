@@ -6,7 +6,7 @@ pherkin - Execute tests written using Test::BDD::Cucumber
 
 =head1 VERSION
 
-version 0.18
+version 0.19
 
 =head1 SYNOPSIS
 
@@ -37,6 +37,8 @@ is considered to be failing.
  -t, --tags @tag        Run scenarios tagged with '@tag'
  -t, --tags @tag1,@tag2 Run scenarios tagged with '@tag1' and '@tag2'
  -t, --tags ~@tag       Run scenarios tagged without '@tag'
+ --i18n LANG            List keywords for a particular language.
+                        '--i18n help' lists all languages available.
 
 =head1 OUTPUTS
 
@@ -61,6 +63,7 @@ Copyright 2012, Peter Sergeant; Licensed under the same terms as Perl
 use strict;
 use warnings;
 use FindBin::libs;
+use App::pherkin;
 
 BEGIN {
     if ( not -t STDOUT ) {
@@ -68,7 +71,6 @@ BEGIN {
     }
 }
 
-use App::pherkin;
 my $result = App::pherkin->new()->run( @ARGV );
 
 exit( $result->result eq 'failing' );

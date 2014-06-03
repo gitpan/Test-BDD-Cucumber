@@ -1,5 +1,5 @@
 package Test::BDD::Cucumber::Model::Scenario;
-$Test::BDD::Cucumber::Model::Scenario::VERSION = '0.18';
+$Test::BDD::Cucumber::Model::Scenario::VERSION = '0.19';
 use Moose;
 
 =head1 NAME
@@ -8,7 +8,7 @@ Test::BDD::Cucumber::Model::Scenario - Model to represent a scenario
 
 =head1 VERSION
 
-version 0.18
+version 0.19
 
 =head1 DESCRIPTION
 

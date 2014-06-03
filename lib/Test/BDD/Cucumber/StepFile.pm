@@ -1,21 +1,23 @@
 package Test::BDD::Cucumber::StepFile;
-$Test::BDD::Cucumber::StepFile::VERSION = '0.18';
+$Test::BDD::Cucumber::StepFile::VERSION = '0.19';
 =head1 NAME
 
 Test::BDD::Cucumber::StepFile - Functions for creating and loading Step Definitions
 
 =head1 VERSION
 
-version 0.18
+version 0.19
 
 =cut
 
 use strict;
 use warnings;
+use Carp qw/croak/;
 
+use Test::BDD::Cucumber::I18n qw(languages langdef keyword_to_subname);
 require Exporter;
 our @ISA = qw(Exporter);
-our @EXPORT = qw(Given When Then Step Transform Before After);
+our @EXPORT = qw(Step Transform Before After C S);
 
 our @definitions;
 
@@ -33,15 +35,14 @@ Defining steps:
  use strict; use warnings; use Test::More;
 
  use Test::BDD::Cucumber::StepFile;
- use Method::Signatures; # Allows short-hand func method
 
- Given     'something',          func ($c) { print "YEAH!" }
- When      qr/smooooth (\d+)/,   func ($c) { print "YEEEHAH $1" }
- Then      qr/something (else)/, func ($c) { print "Meh $1" }
- Step      qr/die now/,          func ($c) { die "now" }
- Transform qr/^(\d+)$/,          func ($c) { int $1 }
- Before                          func ($c) { setup_db() }
- After                           func ($c) { teardown() }
+ Given     'something',          sub { print "YEAH!" }
+ When      qr/smooooth (\d+)/,   sub { print "YEEEHAH $1" }
+ Then      qr/something (else)/, sub { S->{'match'} = $1 }
+ Step      qr/die now/,          sub { die "now" }
+ Transform qr/^(\d+)$/,          sub { int $1 }
+ Before                          sub { setup_db() }
+ After                           sub { teardown() }
 
 Loading steps, in a different file:
 
@@ -70,15 +71,66 @@ these are returned to it...
 
 =cut
 
-sub Given     { push( @definitions, [ Given     => @_ ] ) }
-sub When      { push( @definitions, [ When      => @_ ] ) }
-sub Then      { push( @definitions, [ Then      => @_ ] ) }
+# Mapped to Given, When, and Then as part of the i18n mapping below
+sub _Given     { push( @definitions, [ Given     => @_ ] ) }
+sub _When      { push( @definitions, [ When      => @_ ] ) }
+sub _Then      { push( @definitions, [ Then      => @_ ] ) }
 
 sub Step      { push( @definitions, [ Step      => @_ ] ) }
 
 sub Transform { push( @definitions, [ Transform => @_ ] ) }
 sub Before    { push( @definitions, [ Before    => @_ ] ) }
 sub After     { push( @definitions, [ After     => @_ ] ) }
+
+my @SUBS;
+
+for my $language (languages()) {
+    my $langdef=langdef($language);
+
+    _alias_function( $langdef->{given}, \&_Given);
+    _alias_function( $langdef->{when},  \&_When);
+    _alias_function( $langdef->{then},  \&_Then);
+
+# Hm ... in cucumber, all step definining keywords are the same.
+# Here, the parser replaces 'and' and 'but' with the last verb. Tricky ...
+#    _alias_function( $langdef->{and}, \&And);
+#    _alias_function( $langdef->{but}, \&But);
+}
+
+push @EXPORT, @SUBS;
+
+sub _alias_function {
+  my ($keywords, $f)=@_;
+
+  my @keywords=split('\|', $keywords);
+  for my $word (@keywords) {
+    # asterisks won't be aliased to any sub
+    next if $word eq '*';
+
+    my $subname=keyword_to_subname($word);
+
+    {
+      no strict 'refs';
+      no warnings 'redefine';
+      no warnings 'once';
+
+      *$subname=$f;
+      push @SUBS, $subname;
+    }
+  }
+}
+
+=head2 C
+
+=head2 S
+
+Return the context and the Scenario stash, respectively, B<but only when called
+inside a step definition>.
+
+=cut
+
+sub S { croak "You can only call `S` inside a step definition" }
+sub C { croak "You can only call `C` inside a step definition" }
 
 =head2 load
 

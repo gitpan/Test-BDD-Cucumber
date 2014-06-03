@@ -1,12 +1,12 @@
 package Test::BDD::Cucumber::Loader;
-$Test::BDD::Cucumber::Loader::VERSION = '0.18';
+$Test::BDD::Cucumber::Loader::VERSION = '0.19';
 =head1 NAME
 
 Test::BDD::Cucumber::Loader - Simplify loading of Step Definition and feature files
 
 =head1 VERSION
 
-version 0.18
+version 0.19
 
 =head1 DESCRIPTION
 
@@ -33,6 +33,7 @@ use Test::BDD::Cucumber::StepFile();
 
 sub load {
     my ( $class, $path, $tag_scheme ) = @_;
+
     my $executor = Test::BDD::Cucumber::Executor->new();
 
     # Either load a feature or a directory...

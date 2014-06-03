@@ -1,12 +1,12 @@
 package Test::BDD::Cucumber;
-$Test::BDD::Cucumber::VERSION = '0.18';
+$Test::BDD::Cucumber::VERSION = '0.19';
 =head1 NAME
 
 Test::BDD::Cucumber - Feature-complete Cucumber-style testing in Perl
 
 =head1 VERSION
 
-version 0.18
+version 0.19
 
 =head1 DESCRIPTION
 
@@ -18,17 +18,11 @@ L<Cucumber on Perl on MetaCPAN|https://metacpan.org/release/Test-BDD-Cucumber>
 
 =head1 WARNING
 
-This is beta software, at best. The interface is unlikely to undergo major
-incompatible changes, but it's certainly possible. Do have a read of the
-B<Bugs and Missing> section below so you're not surprised when these things
-don't work.
+Do have a read of the B<Bugs and Missing> section below so you're not surprised
+when things don't work.
 
 In almost all cases, where the behaviour of this module is different from
 the I<real> Cucumber, the plan is to move it to be more similar to that.
-
-The idea is that the first 1.0 release will be the first production release and
-before that, you're on your own. There are many things still to add, but B<I'm>
-using it to do Real Things already.
 
 =head1 NEXT STEPS
 
@@ -57,17 +51,11 @@ in the very near future:
 
 =over 4
 
-=item * Localization
-
-=item * Step Argument Transforms
-
 =item * Quoting in tables is broken
 
 =item * Placeholders in pystrings is broken
 
 =item * Explicit Step Outline notation doesn't work (although step outlines are explicitly supported)
-
-=item * Unicode support is probably a bit ropey
 
 =item * Pherkin isn't really fit for purpose yet
 
@@ -77,9 +65,11 @@ in the very near future:
 
 On Github, of course: L<https://github.com/sheriff/test-bdd-cucumber-perl>.
 
-=head1 AUTHOR
+=head1 AUTHORS
 
 Peter Sergeant C<pete@clueball.com>
+
+Ben Rodgers C<ben@bdr.org>
 
 =head1 LICENSE
 

@@ -1,5 +1,5 @@
 package Test::BDD::Cucumber::Model::Feature;
-$Test::BDD::Cucumber::Model::Feature::VERSION = '0.18';
+$Test::BDD::Cucumber::Model::Feature::VERSION = '0.19';
 use Moose;
 
 =head1 NAME
@@ -8,7 +8,7 @@ Test::BDD::Cucumber::Model::Document - Model to represent a feature file, parsed
 
 =head1 VERSION
 
-version 0.18
+version 0.19
 
 =head1 DESCRIPTION
 
@@ -77,6 +77,15 @@ Scenarios.
 =cut
 
 has 'tags' => ( is => 'rw', isa => 'ArrayRef[Str]', default => sub {[]} );
+
+=head2 language
+
+Language the feature is written in. Defaults to 'en'.
+
+=cut
+
+has 'language' => ( is => 'rw', isa => 'Str',
+	default => sub { 'en' });
 
 =head1 AUTHOR
 
