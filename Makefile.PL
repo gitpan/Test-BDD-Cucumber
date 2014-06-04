@@ -28,6 +28,7 @@ my %WriteMakefileArgs = (
   "PREREQ_PM" => {
     "Clone" => 0,
     "File::Find::Rule" => 0,
+    "File::ShareDir" => 0,
     "File::Slurp" => 0,
     "FindBin::libs" => 0,
     "Getopt::Long" => 0,
@@ -46,7 +47,7 @@ my %WriteMakefileArgs = (
     "YAML::Syck" => 0
   },
   "TEST_REQUIRES" => {},
-  "VERSION" => "0.21",
+  "VERSION" => "0.22",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -56,6 +57,7 @@ my %WriteMakefileArgs = (
 my %FallbackPrereqs = (
   "Clone" => 0,
   "File::Find::Rule" => 0,
+  "File::ShareDir" => 0,
   "File::Slurp" => 0,
   "FindBin::libs" => 0,
   "Getopt::Long" => 0,

@@ -1,12 +1,12 @@
 package Test::BDD::Cucumber::Harness::Data;
-$Test::BDD::Cucumber::Harness::Data::VERSION = '0.21';
+$Test::BDD::Cucumber::Harness::Data::VERSION = '0.22';
 =head1 NAME
 
 Test::BDD::Cucumber::Harness::Data - Builds up an internal data representation of test passes / failures
 
 =head1 VERSION
 
-version 0.21
+version 0.22
 
 =head1 DESCRIPTION
 
@@ -188,7 +188,7 @@ Peter Sergeant C<pete@clueball.com>
 
 =head1 LICENSE
 
-Copyright 2011, Peter Sergeant; Licensed under the same terms as Perl
+Copyright 2011-2014, Peter Sergeant; Licensed under the same terms as Perl
 
 =cut
 

@@ -1,5 +1,5 @@
 package Test::BDD::Cucumber::Manual::Tutorial
-$Test::BDD::Cucumber::Manual::Tutorial::VERSION = '0.21';
+$Test::BDD::Cucumber::Manual::Tutorial::VERSION = '0.22';
 =encoding utf8
 
 =head1 NAME
@@ -8,7 +8,7 @@ Test::BDD::Cucumber::Manual::Tutorial - Quick Start Guide
 
 =head1 VERSION
 
-version 0.21
+version 0.22
 
 =head1 Introduction
 
@@ -92,7 +92,7 @@ C<features/step_definitions/basic_steps.pl> file in it:
  };
 
 When you run L<pherkin|App::Pherkin> or the Test::Builder-based test which does
-the same thing (L<t/900_run_features.thttps://github.com/sheriff/test-bdd-cucumber-perl/blob/master/t/900_run_features.t>),
+the same thing (L<900_run_features.t|https://github.com/sheriff/test-bdd-cucumber-perl/blob/master/t/900_run_features.t>),
 we look for a C<features/> directory, and search for step definitions files
 (matched by C<*_steps.pl>) and feature files (matched by C<*.feature>).
 
@@ -311,7 +311,7 @@ Peter Sergeant C<pete@clueball.com>
 
 =head1 LICENSE
 
-Copyright 2011, Peter Sergeant; Licensed under the same terms as Perl
+Copyright 2011-2014, Peter Sergeant; Licensed under the same terms as Perl
 
 =cut
 

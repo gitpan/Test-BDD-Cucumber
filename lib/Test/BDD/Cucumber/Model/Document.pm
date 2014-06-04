@@ -1,5 +1,5 @@
 package Test::BDD::Cucumber::Model::Document;
-$Test::BDD::Cucumber::Model::Document::VERSION = '0.21';
+$Test::BDD::Cucumber::Model::Document::VERSION = '0.22';
 use Moose;
 use Test::BDD::Cucumber::Model::Line;
 
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::Model::Document - Model to represent a feature file on disk
 
 =head1 VERSION
 
-version 0.21
+version 0.22
 
 =head1 DESCRIPTION
 
@@ -74,7 +74,7 @@ Peter Sergeant C<pete@clueball.com>
 
 =head1 LICENSE
 
-Copyright 2011, Peter Sergeant; Licensed under the same terms as Perl
+Copyright 2011-2014, Peter Sergeant; Licensed under the same terms as Perl
 
 =cut
 

@@ -1,5 +1,5 @@
 package Test::BDD::Cucumber::StepContext;
-$Test::BDD::Cucumber::StepContext::VERSION = '0.21';
+$Test::BDD::Cucumber::StepContext::VERSION = '0.22';
 use Moose;
 use List::Util qw( first );
 
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::StepContext - Data made available to step definitions
 
 =head1 VERSION
 
-version 0.21
+version 0.22
 
 =head1 DESCRIPTION
 
@@ -248,7 +248,10 @@ sub _build_transformed_matches
     if ( $self->verb ne 'transform'
         and $self->has_transformers )
     {
-        @transformed_matches = map { $_ = $self->transform( $_ ) } @transformed_matches;
+	@transformed_matches = map {
+				    my $match = $_;
+				    $match = $self->transform( $match );
+				    } @transformed_matches;
     }
 
     return \@transformed_matches;
@@ -288,7 +291,7 @@ Peter Sergeant C<pete@clueball.com>
 
 =head1 LICENSE
 
-Copyright 2011, Peter Sergeant; Licensed under the same terms as Perl
+Copyright 2011-2014, Peter Sergeant; Licensed under the same terms as Perl
 
 =cut
 
