@@ -7,8 +7,6 @@ use warnings;
 
 use ExtUtils::MakeMaker 6.30;
 
-use File::ShareDir::Install;
-install_share dist => "share";
 
 
 my %WriteMakefileArgs = (
@@ -16,8 +14,7 @@ my %WriteMakefileArgs = (
   "AUTHOR" => "['Peter Sergeant <pete\@clueball.com>','Ben Rogers <ben\@bdr.org>']",
   "BUILD_REQUIRES" => {},
   "CONFIGURE_REQUIRES" => {
-    "ExtUtils::MakeMaker" => "6.30",
-    "File::ShareDir::Install" => "0.03"
+    "ExtUtils::MakeMaker" => "6.30"
   },
   "DISTNAME" => "Test-BDD-Cucumber",
   "EXE_FILES" => [
@@ -28,7 +25,6 @@ my %WriteMakefileArgs = (
   "PREREQ_PM" => {
     "Clone" => 0,
     "File::Find::Rule" => 0,
-    "File::ShareDir" => 0,
     "File::Slurp" => 0,
     "FindBin::libs" => 0,
     "Getopt::Long" => 0,
@@ -42,12 +38,11 @@ my %WriteMakefileArgs = (
     "Term::ANSIColor" => "3.00",
     "Test::Builder" => 0,
     "Test::Differences" => 0,
-    "Test::File::ShareDir" => 0,
     "Test::More" => 0,
     "YAML::Syck" => 0
   },
   "TEST_REQUIRES" => {},
-  "VERSION" => "0.22",
+  "VERSION" => "0.23",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -57,7 +52,6 @@ my %WriteMakefileArgs = (
 my %FallbackPrereqs = (
   "Clone" => 0,
   "File::Find::Rule" => 0,
-  "File::ShareDir" => 0,
   "File::Slurp" => 0,
   "FindBin::libs" => 0,
   "Getopt::Long" => 0,
@@ -71,7 +65,6 @@ my %FallbackPrereqs = (
   "Term::ANSIColor" => "3.00",
   "Test::Builder" => 0,
   "Test::Differences" => 0,
-  "Test::File::ShareDir" => 0,
   "Test::More" => 0,
   "YAML::Syck" => 0
 );
@@ -88,10 +81,5 @@ delete $WriteMakefileArgs{CONFIGURE_REQUIRES}
 
 WriteMakefile(%WriteMakefileArgs);
 
-{
-package
-MY;
-use File::ShareDir::Install qw(postamble);
-}
 
 

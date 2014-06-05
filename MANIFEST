@@ -26,6 +26,7 @@ lib/Test/BDD/Cucumber/Harness.pm
 lib/Test/BDD/Cucumber/Harness/Data.pm
 lib/Test/BDD/Cucumber/Harness/TermColor.pm
 lib/Test/BDD/Cucumber/Harness/TestBuilder.pm
+lib/Test/BDD/Cucumber/I18N/Data.pm
 lib/Test/BDD/Cucumber/I18n.pm
 lib/Test/BDD/Cucumber/Loader.pm
 lib/Test/BDD/Cucumber/Manual/Architecture.pod
@@ -44,7 +45,6 @@ lib/Test/BDD/Cucumber/StepContext.pm
 lib/Test/BDD/Cucumber/StepFile.pm
 lib/Test/BDD/Cucumber/Util.pm
 script/make_corpus.pl
-share/i18n.json
 t/210_background_sections.t
 t/220_tag_parsing.t
 t/230_tag_matching.t

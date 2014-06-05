@@ -1,12 +1,12 @@
 package Test::BDD::Cucumber::Manual::Architecture;
-$Test::BDD::Cucumber::Manual::Architecture::VERSION = '0.22';
+$Test::BDD::Cucumber::Manual::Architecture::VERSION = '0.23';
 =head1 NAME
 
 Test::BDD::Cucumber::Manual::Architecture - Structural Overview
 
 =head1 VERSION
 
-version 0.22
+version 0.23
 
 =head1 INTRODUCTION
 

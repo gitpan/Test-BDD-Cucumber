@@ -1,12 +1,12 @@
 package Test::BDD::Cucumber::Executor;
-$Test::BDD::Cucumber::Executor::VERSION = '0.22';
+$Test::BDD::Cucumber::Executor::VERSION = '0.23';
 =head1 NAME
 
 Test::BDD::Cucumber::Executor - Run through Feature and Harness objects
 
 =head1 VERSION
 
-version 0.22
+version 0.23
 
 =head1 DESCRIPTION
 
@@ -370,8 +370,6 @@ sub dispatch {
     {
         # Localize test builder
         local $Test::Builder::Test = $tb_return->{'builder'};
-        # Guarantee the $<digits> :-/
-        $context->matches([ $context->text =~ $regular_expression ]);
 
         # Execute!
         eval {
@@ -382,6 +380,11 @@ sub dispatch {
             local *Test::BDD::Cucumber::StepFile::C = sub {
                 return $context
             };
+
+            # Rematch the regex, setting $1, $2, and friends correctly
+            $context->matches([ $context->text =~ $regular_expression ]);
+
+            # OK, actually execute
             $coderef->( $context )
         };
         if ( $@ ) {
