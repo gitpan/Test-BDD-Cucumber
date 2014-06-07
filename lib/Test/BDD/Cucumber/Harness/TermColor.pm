@@ -1,12 +1,12 @@
 package Test::BDD::Cucumber::Harness::TermColor;
-$Test::BDD::Cucumber::Harness::TermColor::VERSION = '0.23';
+$Test::BDD::Cucumber::Harness::TermColor::VERSION = '0.24';
 =head1 NAME
 
 Test::BDD::Cucumber::Harness::TermColor - Prints colorized text to the screen
 
 =head1 VERSION
 
-version 0.23
+version 0.24
 
 =head1 DESCRIPTION
 
@@ -33,7 +33,7 @@ BEGIN {
         (! $ENV{'DISABLE_WIN32_FALLBACK'} )
     ) {
         # Try and load
-        eval "require Win32::Console::ANSI";
+        eval { require Win32::Console::ANSI };
         if ( $@ ) {
             print "# Install Win32::Console::ANSI to display colors properly\n";
         }

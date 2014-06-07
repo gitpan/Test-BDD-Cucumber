@@ -1,5 +1,5 @@
 package Test::BDD::Cucumber::StepContext;
-$Test::BDD::Cucumber::StepContext::VERSION = '0.23';
+$Test::BDD::Cucumber::StepContext::VERSION = '0.24';
 use Moose;
 use List::Util qw( first );
 
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::StepContext - Data made available to step definitions
 
 =head1 VERSION
 
-version 0.23
+version 0.24
 
 =head1 DESCRIPTION
 

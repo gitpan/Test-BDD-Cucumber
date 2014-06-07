@@ -21,6 +21,7 @@ examples/tagged-digest/features/basic.feature
 examples/tagged-digest/features/step_definitions/basic_steps.pl
 lib/App/pherkin.pm
 lib/Test/BDD/Cucumber.pm
+lib/Test/BDD/Cucumber/Errors.pm
 lib/Test/BDD/Cucumber/Executor.pm
 lib/Test/BDD/Cucumber/Harness.pm
 lib/Test/BDD/Cucumber/Harness/Data.pm
@@ -51,6 +52,8 @@ t/230_tag_matching.t
 t/240-localized-features.t
 t/250-i18n-json.t
 t/310_auto_corpus.t
+t/400_app_pherkin_harnesses.t
+t/500_error_formatter.t
 t/700_tag_processing.t
 t/800_regressions_010_too_few_features.t
 t/900_run_cucumber_tests.t
@@ -66,5 +69,4 @@ t/old/030_pherkin_010_sanity.t.old
 t/old/900_run_features.t.old
 t/regressions/010_greedy_table_parsing/test.feature
 t/regressions/010_greedy_table_parsing/test_steps.pl
-t/release-pod-coverage.t
 t/release-pod-syntax.t

@@ -1,10 +1,11 @@
 package Test::BDD::Cucumber::I18N::Data;
-$Test::BDD::Cucumber::I18N::Data::VERSION = '0.23';
+$Test::BDD::Cucumber::I18N::Data::VERSION = '0.24';
 use strict;
 use warnings;
 
 use JSON::MaybeXS qw/decode_json/;
 
+=encoding utf8
 
 =head1 NAME
 
@@ -12,7 +13,7 @@ Test::BDD::Cucumber::I18N::Data - Cucumber language definitions
 
 =head1 VERSION
 
-version 0.23
+version 0.24
 
 =head1 DESCRIPTION
 
