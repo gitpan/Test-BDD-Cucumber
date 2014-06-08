@@ -51,6 +51,7 @@ t/220_tag_parsing.t
 t/230_tag_matching.t
 t/240-localized-features.t
 t/250-i18n-json.t
+t/260_match_matcher.t
 t/310_auto_corpus.t
 t/400_app_pherkin_harnesses.t
 t/500_error_formatter.t

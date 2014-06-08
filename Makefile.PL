@@ -33,6 +33,7 @@ my %WriteMakefileArgs = (
     "List::Util" => 0,
     "Module::Runtime" => 0,
     "Moose" => 0,
+    "Number::Range" => 0,
     "Path::Class" => 0,
     "Storable" => 0,
     "Term::ANSIColor" => "3.00",
@@ -42,7 +43,7 @@ my %WriteMakefileArgs = (
     "YAML::Syck" => 0
   },
   "TEST_REQUIRES" => {},
-  "VERSION" => "0.24",
+  "VERSION" => "0.25",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -60,6 +61,7 @@ my %FallbackPrereqs = (
   "List::Util" => 0,
   "Module::Runtime" => 0,
   "Moose" => 0,
+  "Number::Range" => 0,
   "Path::Class" => 0,
   "Storable" => 0,
   "Term::ANSIColor" => "3.00",
