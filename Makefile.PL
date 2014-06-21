@@ -28,6 +28,7 @@ my %WriteMakefileArgs = (
     "File::Slurp" => 0,
     "FindBin::libs" => 0,
     "Getopt::Long" => 0,
+    "IO::Scalar" => 0,
     "JSON::MaybeXS" => 0,
     "List::MoreUtils" => 0,
     "List::Util" => 0,
@@ -43,7 +44,7 @@ my %WriteMakefileArgs = (
     "YAML::Syck" => 0
   },
   "TEST_REQUIRES" => {},
-  "VERSION" => "0.25",
+  "VERSION" => "0.26",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -56,6 +57,7 @@ my %FallbackPrereqs = (
   "File::Slurp" => 0,
   "FindBin::libs" => 0,
   "Getopt::Long" => 0,
+  "IO::Scalar" => 0,
   "JSON::MaybeXS" => 0,
   "List::MoreUtils" => 0,
   "List::Util" => 0,

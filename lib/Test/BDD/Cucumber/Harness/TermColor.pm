@@ -1,12 +1,12 @@
 package Test::BDD::Cucumber::Harness::TermColor;
-$Test::BDD::Cucumber::Harness::TermColor::VERSION = '0.25';
+$Test::BDD::Cucumber::Harness::TermColor::VERSION = '0.26';
 =head1 NAME
 
 Test::BDD::Cucumber::Harness::TermColor - Prints colorized text to the screen
 
 =head1 VERSION
 
-version 0.25
+version 0.26
 
 =head1 DESCRIPTION
 
@@ -45,15 +45,24 @@ use Test::BDD::Cucumber::Model::Result;
 
 extends 'Test::BDD::Cucumber::Harness';
 
+has 'fh' => ( is => 'rw', isa => 'FileHandle', default => sub { \*STDOUT } );
+
 my $margin = 2;
-if ( $margin > 1 ) {
-    print "\n" x ( $margin - 1 );
+sub BUILD {
+    my $self = shift;
+    my $fh = $self->fh;
+
+    if ( $margin > 1 ) {
+        print $fh "\n" x ( $margin - 1 );
+    }
 }
 
 my $current_feature;
 
 sub feature {
     my ( $self, $feature ) = @_;
+    my $fh = $self->fh;
+
     $current_feature = $feature;
     $self->_display({
         indent    => 0,
@@ -64,7 +73,11 @@ sub feature {
     });
 }
 
-sub feature_done { print "\n"; }
+sub feature_done {
+    my $self = shift;
+    my $fh = $self->fh;
+    print $fh "\n";
+}
 
 sub scenario {
     my ( $self, $scenario, $dataset, $longest ) = @_;
@@ -81,7 +94,11 @@ sub scenario {
     });
 }
 
-sub scenario_done { print "\n"; }
+sub scenario_done {
+    my $self = shift;
+    my $fh = $self->fh;
+    print $fh "\n";
+}
 
 sub step {}
 sub step_done {
@@ -116,9 +133,12 @@ sub step_done {
         $color eq 'red' or return;
         $text = 'In ' . ucfirst( $context->verb ) . ' Hook';
         undef $highlights;
-    } else {
+    } elsif ( $highlights ) {
         $text = $context->step->verb_original . ' ' . $context->text;
         $highlights = [[ 0, $context->step->verb_original . ' ' ], @$highlights];
+    } else {
+        $text = $context->step->verb_original . ' ' . $context->text;
+        $highlights = [[ 0, $text ]];
     }
 
     $self->_display({
@@ -167,13 +187,14 @@ sub _note_step_data {
 
 sub _display {
     my ( $class, $options ) = @_;
+    my $fh = ref $class ? $class->fh : \*STDOUT;
     $options->{'indent'} += $margin;
 
     # Reset it all...
-    print color 'reset';
+    print $fh color 'reset';
 
     # Print the main line
-    print ' ' x $options->{'indent'};
+    print $fh ' ' x $options->{'indent'};
 
     # Highlight as appropriate
     my $color = color $options->{'color'};
@@ -184,30 +205,30 @@ sub _display {
 
         for ( @{$options->{'highlights'}} ) {
             my ($flag, $text) = @$_;
-            print $reset . ( $flag ? $hl : $base ) . $text . $reset;
+            print $fh $reset . ( $flag ? $hl : $base ) . $text . $reset;
         }
 
     # Normal output
     } else {
-        print color $options->{'color'};
-        print $options->{'text'};
+        print $fh color $options->{'color'};
+        print $fh $options->{'text'};
     }
 
     # Reset and newline
-    print color 'reset';
-    print "\n";
+    print $fh color 'reset';
+    print $fh "\n";
 
     # Print follow-up lines...
     for my $line ( @{ $options->{'follow_up'} || [] } ) {
-        print color 'reset';
-        print ' ' x ( $options->{'indent'} + 2 );
-        print color $options->{'color'};
-        print $line;
-        print color 'reset';
-        print "\n";
+        print $fh color 'reset';
+        print $fh ' ' x ( $options->{'indent'} + 2 );
+        print $fh color $options->{'color'};
+        print $fh $line;
+        print $fh color 'reset';
+        print $fh "\n";
     }
 
-    print "\n" if $options->{'trailing'};
+    print $fh "\n" if $options->{'trailing'};
 }
 
 =head1 AUTHOR

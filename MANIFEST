@@ -49,14 +49,15 @@ script/make_corpus.pl
 t/210_background_sections.t
 t/220_tag_parsing.t
 t/230_tag_matching.t
-t/240-localized-features.t
-t/250-i18n-json.t
+t/240_localized_features.t
+t/250_i18n_json.t
 t/260_match_matcher.t
 t/310_auto_corpus.t
 t/400_app_pherkin_harnesses.t
 t/500_error_formatter.t
 t/700_tag_processing.t
 t/800_regressions_010_too_few_features.t
+t/800_regressions_020_term_color_skipped_steps.t
 t/900_run_cucumber_tests.t
 t/auto_corpus/calculator.feature_corpus
 t/auto_corpus/digest.feature_corpus
