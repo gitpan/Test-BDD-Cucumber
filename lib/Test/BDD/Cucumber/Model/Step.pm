@@ -1,5 +1,5 @@
 package Test::BDD::Cucumber::Model::Step;
-$Test::BDD::Cucumber::Model::Step::VERSION = '0.26';
+$Test::BDD::Cucumber::Model::Step::VERSION = '0.27';
 use Moose;
 
 =head1 NAME
@@ -8,7 +8,7 @@ Test::BDD::Cucumber::Model::Step - Model to represent a step in a scenario
 
 =head1 VERSION
 
-version 0.26
+version 0.27
 
 =head1 DESCRIPTION
 
@@ -33,7 +33,7 @@ that appeared in the physical file - this will sometimes be C<and>.
 
 =cut
 
-has 'verb' => ( is => 'rw', isa => 'Str' );
+has 'verb'          => ( is => 'rw', isa => 'Str' );
 has 'verb_original' => ( is => 'rw', isa => 'Str' );
 
 =head2 line
@@ -60,8 +60,11 @@ by harnesses
 
 =cut
 
-has 'data_as_strings' => ( is => 'rw', default => sub {[]},
-	isa => 'ArrayRef[Str]' );
+has 'data_as_strings' => (
+    is      => 'rw',
+    default => sub { [] },
+    isa     => 'ArrayRef[Str]'
+);
 
 =head2 columns
 

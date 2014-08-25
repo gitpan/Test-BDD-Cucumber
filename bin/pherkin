@@ -6,7 +6,7 @@ pherkin - Execute tests written using Test::BDD::Cucumber
 
 =head1 VERSION
 
-version 0.26
+version 0.27
 
 =head1 SYNOPSIS
 
@@ -39,6 +39,7 @@ is considered to be failing.
  -t, --tags ~@tag       Run scenarios tagged without '@tag'
  --i18n LANG            List keywords for a particular language.
                         '--i18n help' lists all languages available.
+ -h, --help             Print usage information.
 
 =head1 OUTPUTS
 

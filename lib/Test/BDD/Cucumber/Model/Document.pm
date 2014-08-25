@@ -1,5 +1,5 @@
 package Test::BDD::Cucumber::Model::Document;
-$Test::BDD::Cucumber::Model::Document::VERSION = '0.26';
+$Test::BDD::Cucumber::Model::Document::VERSION = '0.27';
 use Moose;
 use Test::BDD::Cucumber::Model::Line;
 
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::Model::Document - Model to represent a feature file on disk
 
 =head1 VERSION
 
-version 0.26
+version 0.27
 
 =head1 DESCRIPTION
 
@@ -31,7 +31,7 @@ The file contents, as a string
 
 =cut
 
-has 'content'  => ( is => 'ro', isa => 'Str' );
+has 'content' => ( is => 'ro', isa => 'Str' );
 
 =head2 lines
 
@@ -40,8 +40,11 @@ objects
 
 =cut
 
-has 'lines'    => ( is => 'rw', default => sub {[]},
-	isa => 'ArrayRef[Test::BDD::Cucumber::Model::Line]' );
+has 'lines' => (
+    is      => 'rw',
+    default => sub { [] },
+    isa     => 'ArrayRef[Test::BDD::Cucumber::Model::Line]'
+);
 
 =head1 OTHER
 
@@ -53,20 +56,22 @@ The instantiation populates C<lines()> by splitting the input on newlines.
 
 # Create lines
 sub BUILD {
-	my $self = shift;
+    my $self = shift;
 
-	# Reset any content that was in lines
-	my $counter = 0;
+    # Reset any content that was in lines
+    my $counter = 0;
 
-	for my $line ( split(/\n/, $self->content ) ) {
-		my $obj = Test::BDD::Cucumber::Model::Line->new({
-			number      => ++$counter,
-			document    => $self,
-			raw_content => $line
-		});
-		push( @{ $self->lines }, $obj );
-	}
-};
+    for my $line ( split( /\n/, $self->content ) ) {
+        my $obj = Test::BDD::Cucumber::Model::Line->new(
+            {
+                number      => ++$counter,
+                document    => $self,
+                raw_content => $line
+            }
+        );
+        push( @{ $self->lines }, $obj );
+    }
+}
 
 =head1 AUTHOR
 

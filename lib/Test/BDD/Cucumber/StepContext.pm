@@ -1,5 +1,5 @@
 package Test::BDD::Cucumber::StepContext;
-$Test::BDD::Cucumber::StepContext::VERSION = '0.26';
+$Test::BDD::Cucumber::StepContext::VERSION = '0.27';
 use Moose;
 use List::Util qw( first );
 
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::StepContext - Data made available to step definitions
 
 =head1 VERSION
 
-version 0.26
+version 0.27
 
 =head1 DESCRIPTION
 
@@ -46,7 +46,8 @@ See the C<data> method below.
 
 =cut
 
-has '_data'     => ( is => 'ro', isa => 'Str|ArrayRef', init_arg => 'data', default => '' );
+has '_data' =>
+  ( is => 'ro', isa => 'Str|ArrayRef', init_arg => 'data', default => '' );
 
 =head2 stash
 
@@ -63,7 +64,7 @@ the following two lines of code equivalent:
 
 =cut
 
-has 'stash'    => ( is => 'ro', required => 1, isa => 'HashRef' );
+has 'stash' => ( is => 'ro', required => 1, isa => 'HashRef' );
 
 =head2 feature
 
@@ -77,9 +78,12 @@ objects respectively.
 
 =cut
 
-has 'feature'  => ( is => 'ro', required => 1, isa => 'Test::BDD::Cucumber::Model::Feature' );
-has 'scenario' => ( is => 'ro', required => 1, isa => 'Test::BDD::Cucumber::Model::Scenario' );
-has 'step'     => ( is => 'ro', required => 0, isa => 'Test::BDD::Cucumber::Model::Step' );
+has 'feature' =>
+  ( is => 'ro', required => 1, isa => 'Test::BDD::Cucumber::Model::Feature' );
+has 'scenario' =>
+  ( is => 'ro', required => 1, isa => 'Test::BDD::Cucumber::Model::Scenario' );
+has 'step' =>
+  ( is => 'ro', required => 0, isa => 'Test::BDD::Cucumber::Model::Step' );
 
 =head2 verb
 
@@ -87,7 +91,7 @@ The lower-cased verb a Step Definition was called with.
 
 =cut
 
-has 'verb'     => ( is => 'ro', required => 1, isa => 'Str' );
+has 'verb' => ( is => 'ro', required => 1, isa => 'Str' );
 
 =head2 text
 
@@ -96,7 +100,7 @@ multiplied out at this point.
 
 =cut
 
-has 'text'     => ( is => 'ro', required => 1, isa => 'Str', default => '' );
+has 'text' => ( is => 'ro', required => 1, isa => 'Str', default => '' );
 
 =head2 harness
 
@@ -104,7 +108,8 @@ The L<Test::BDD::Cucumber::Harness> harness being used by the executor.
 
 =cut
 
-has 'harness'  => ( is => 'ro', required => 1, isa => 'Test::BDD::Cucumber::Harness' );
+has 'harness' =>
+  ( is => 'ro', required => 1, isa => 'Test::BDD::Cucumber::Harness' );
 
 =head2 matches
 
@@ -113,13 +118,31 @@ C<$1>, C<$2> etc as appropriate.
 
 =cut
 
-has '_matches'  => ( is => 'rw', isa => 'ArrayRef', init_arg => 'matches', default => sub { [] } );
+has '_matches' => (
+    is       => 'rw',
+    isa      => 'ArrayRef',
+    init_arg => 'matches',
+    default  => sub { [] }
+);
 
-has 'transformers' => ( is => 'ro', isa => 'ArrayRef', predicate => 'has_transformers', );
+has 'transformers' =>
+  ( is => 'ro', isa => 'ArrayRef', predicate => 'has_transformers', );
 
-has '_transformed_matches' => ( is => 'ro', isa => 'ArrayRef', lazy => 1, builder => '_build_transformed_matches', clearer => '_clear_transformed_matches', );
+has '_transformed_matches' => (
+    is      => 'ro',
+    isa     => 'ArrayRef',
+    lazy    => 1,
+    builder => '_build_transformed_matches',
+    clearer => '_clear_transformed_matches',
+);
 
-has '_transformed_data' => ( is => 'ro', isa => 'Str|ArrayRef', lazy => 1, builder => '_build_transformed_data', clearer => '_clear_transformed_data', );
+has '_transformed_data' => (
+    is      => 'ro',
+    isa     => 'Str|ArrayRef',
+    lazy    => 1,
+    builder => '_build_transformed_data',
+    clearer => '_clear_transformed_data',
+);
 
 =head2 is_hook
 
@@ -128,7 +151,8 @@ this step which is actually an internal hook, i.e. a Before or After step
 
 =cut
 
-has 'is_hook' => ( is => 'ro', isa => 'Bool', lazy => 1, builder => '_build_is_hook' );
+has 'is_hook' =>
+  ( is => 'ro', isa => 'Bool', lazy => 1, builder => '_build_is_hook' );
 
 =head1 METHODS
 
@@ -150,13 +174,11 @@ set of table data.
 
 =cut
 
-sub data
-{
+sub data {
     my $self = shift;
 
-    if ( @_ )
-    {
-        $self->_data( @_ );
+    if (@_) {
+        $self->_data(@_);
         $self->_clear_transformed_data;
         return;
     }
@@ -172,13 +194,11 @@ Call this method will return the possibly Transform-ed matches .
 
 =cut
 
-sub matches
-{
+sub matches {
     my $self = shift;
 
-    if ( @_ )
-    {
-        $self->_matches( @_ );
+    if (@_) {
+        $self->_matches(@_);
         $self->_clear_transformed_matches;
         return;
     }
@@ -193,16 +213,15 @@ from within your Given/When/Then code.
 
 =cut
 
-sub transform
-{
-    my $self = shift;
+sub transform {
+    my $self  = shift;
     my $value = shift;
 
     defined $value or return $value;
 
-    TRANSFORM:
-    for my $transformer ( @{ $self->transformers } )
-    {
+  TRANSFORM:
+    for my $transformer ( @{ $self->transformers } ) {
+
         # turn off this warning so undef can be set in the following regex
         no warnings 'uninitialized';
 
@@ -214,13 +233,15 @@ sub transform
         # into an empty string, so need to mark it as something else
         # and then turn it into proper undef
 
-        if ( $value =~ s/$transformer->[0]/
+        if (
+            $value =~ s/$transformer->[0]/
                 my $value = $transformer->[1]->( $self );
                 defined $value ? $value : '__UNDEF__'
-            /e )
+            /e
+          )
         {
             # if we matched then stop processing this match
-            return $value eq '__UNDEF__' ? undef : $value
+            return $value eq '__UNDEF__' ? undef : $value;
         }
     }
 
@@ -229,37 +250,34 @@ sub transform
 }
 
 # the builder for the is_hook attribute
-sub _build_is_hook
-{
+sub _build_is_hook {
     my $self = shift;
 
     return ( $self->verb eq 'before' or $self->verb eq 'after' ) ? 1 : 0;
 }
 
 # the builder for the _transformed_matches attribute
-sub _build_transformed_matches
-{
+sub _build_transformed_matches {
     my $self = shift;
 
     my @transformed_matches = @{ $self->_matches };
 
     # this stops it recursing forever...
     # and only Transform if there are any to process
-    if ( $self->verb ne 'transform'
+    if (    $self->verb ne 'transform'
         and $self->has_transformers )
     {
-	@transformed_matches = map {
-				    my $match = $_;
-				    $match = $self->transform( $match );
-				    } @transformed_matches;
+        @transformed_matches = map {
+            my $match = $_;
+            $match = $self->transform($match);
+        } @transformed_matches;
     }
 
     return \@transformed_matches;
 }
 
 # the builder for the _transformed_data attribute
-sub _build_transformed_data
-{
+sub _build_transformed_data {
     my $self = shift;
 
     my $transformed_data = $self->_data;
@@ -267,7 +285,7 @@ sub _build_transformed_data
     # again stop recursing
     # only transform table data
     # and only Transform if there are any to process
-    if ( $self->verb ne 'transform'
+    if (    $self->verb ne 'transform'
         and ref $transformed_data
         and $self->has_transformers )
     {
@@ -275,7 +293,8 @@ sub _build_transformed_data
         # table:column1,column2,column3
         my $table_text = 'table:' . join( ',', @{ $self->columns } );
 
-        if ( my $transformer = first { $table_text =~ $_->[0] } @{ $self->transformers } )
+        if ( my $transformer =
+            first { $table_text =~ $_->[0] } @{ $self->transformers } )
         {
             # call the Transform step
             $transformer->[1]->( $self, $transformed_data );

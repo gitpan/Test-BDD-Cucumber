@@ -1,5 +1,5 @@
 package Test::BDD::Cucumber::Util;
-$Test::BDD::Cucumber::Util::VERSION = '0.26';
+$Test::BDD::Cucumber::Util::VERSION = '0.27';
 use strict;
 use warnings;
 
@@ -9,7 +9,7 @@ Test::BDD::Cucumber::Util - Some functions used throughout the code
 
 =head1 VERSION
 
-version 0.26
+version 0.27
 
 =head1 DESCRIPTION
 
@@ -36,15 +36,15 @@ my $marker_start = ';;;TEST_BDD_TEMP_MARKER_OPEN;;;';
 my $marker_end   = ';;;TEST_BDD_TEMP_MARKER_END;;;';
 
 sub bs_quote {
-	my $string = shift;
-	$string =~ s/\\(.)/${marker_start} . ord($1) . ${marker_end}/ge;
-	return $string;
+    my $string = shift;
+    $string =~ s/\\(.)/${marker_start} . ord($1) . ${marker_end}/ge;
+    return $string;
 }
 
 sub bs_unquote {
-	my $string = shift;
-	$string =~ s/$marker_start(\d+)$marker_end/chr($1)/ge;
-	return $string;
+    my $string = shift;
+    $string =~ s/$marker_start(\d+)$marker_end/chr($1)/ge;
+    return $string;
 }
 
 =head1 AUTHOR

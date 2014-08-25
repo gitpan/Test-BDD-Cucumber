@@ -1,5 +1,5 @@
 package Test::BDD::Cucumber::I18n;
-$Test::BDD::Cucumber::I18n::VERSION = '0.26';
+$Test::BDD::Cucumber::I18n::VERSION = '0.27';
 =encoding utf8
 
 =head1 NAME
@@ -8,7 +8,7 @@ Test::BDD::Cucumber::I18N - Internationalization
 
 =head1 VERSION
 
-version 0.26
+version 0.27
 
 =head1 DESCRIPTION
 
@@ -43,9 +43,10 @@ our @EXPORT_OK =
 
 use Test::BDD::Cucumber::I18N::Data;
 
-my $langdefs=_initialize_language_definitions_from_shared_json_file();
+my $langdefs = _initialize_language_definitions_from_shared_json_file();
 
 sub _initialize_language_definitions_from_shared_json_file {
+
     # Parse keywords hash for all supported languages from the JSON file
     my $langdefs = Test::BDD::Cucumber::I18N::Data::language_definitions();
 
