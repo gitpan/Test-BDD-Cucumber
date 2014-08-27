@@ -1,9 +1,8 @@
 package App::pherkin;
-$App::pherkin::VERSION = '0.28';
+$App::pherkin::VERSION = '0.29';
 use strict;
 use warnings;
 
-use FindBin::libs;
 use Getopt::Long;
 use Module::Runtime qw(use_module);
 use List::Util qw(max);
@@ -24,7 +23,7 @@ App::pherkin - Run Cucumber tests from the command line
 
 =head1 VERSION
 
-version 0.28
+version 0.29
 
 =head1 SYNOPSIS
 
@@ -131,7 +130,7 @@ sub _process_arguments {
     unshift @$includes, 'blib/lib', 'blib/arch' if $add_blib;
 
     # Munge the output harness
-    $harness //= "TermColor";
+    $harness = "TermColor" unless defined $harness;
 
     lib->import(@$includes) if @$includes;
 

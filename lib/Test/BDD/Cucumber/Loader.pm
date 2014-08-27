@@ -1,12 +1,12 @@
 package Test::BDD::Cucumber::Loader;
-$Test::BDD::Cucumber::Loader::VERSION = '0.28';
+$Test::BDD::Cucumber::Loader::VERSION = '0.29';
 =head1 NAME
 
 Test::BDD::Cucumber::Loader - Simplify loading of Step Definition and feature files
 
 =head1 VERSION
 
-version 0.28
+version 0.29
 
 =head1 DESCRIPTION
 
@@ -51,7 +51,7 @@ sub load {
 
     # Grab the feature files
     my @features = map {
-        my $file = $_;
+        my $file = file( $_ );
         my $feature =
           Test::BDD::Cucumber::Parser->parse_file( $file, $tag_scheme );
       } (

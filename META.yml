@@ -14,9 +14,9 @@ meta-spec:
 name: Test-BDD-Cucumber
 requires:
   Clone: '0'
+  Digest::SHA1: '0'
   File::Find::Rule: '0'
   File::Slurp: '0'
-  FindBin::libs: '0'
   Getopt::Long: '0'
   IO::Scalar: '0'
   JSON::MaybeXS: '0'
@@ -35,4 +35,4 @@ requires:
 resources:
   bugtracker: https://github.com/sheriff/test-bdd-cucumber-perl/issues
   repository: https://github.com/sheriff/test-bdd-cucumber-perl.git
-version: '0.28'
+version: '0.29'

@@ -6,7 +6,7 @@ pherkin - Execute tests written using Test::BDD::Cucumber
 
 =head1 VERSION
 
-version 0.28
+version 0.29
 
 =head1 SYNOPSIS
 
@@ -63,7 +63,6 @@ Copyright 2012-2014, Peter Sergeant; Licensed under the same terms as Perl
 # See App::pherkin for documentation
 use strict;
 use warnings;
-use FindBin::libs;
 use App::pherkin;
 
 BEGIN {

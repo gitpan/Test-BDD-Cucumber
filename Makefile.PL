@@ -23,9 +23,9 @@ my %WriteMakefileArgs = (
   "NAME" => "Test::BDD::Cucumber",
   "PREREQ_PM" => {
     "Clone" => 0,
+    "Digest::SHA1" => 0,
     "File::Find::Rule" => 0,
     "File::Slurp" => 0,
-    "FindBin::libs" => 0,
     "Getopt::Long" => 0,
     "IO::Scalar" => 0,
     "JSON::MaybeXS" => 0,
@@ -42,7 +42,7 @@ my %WriteMakefileArgs = (
     "Test::More" => 0,
     "YAML::Syck" => 0
   },
-  "VERSION" => "0.28",
+  "VERSION" => "0.29",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -51,9 +51,9 @@ my %WriteMakefileArgs = (
 
 my %FallbackPrereqs = (
   "Clone" => 0,
+  "Digest::SHA1" => 0,
   "File::Find::Rule" => 0,
   "File::Slurp" => 0,
-  "FindBin::libs" => 0,
   "Getopt::Long" => 0,
   "IO::Scalar" => 0,
   "JSON::MaybeXS" => 0,

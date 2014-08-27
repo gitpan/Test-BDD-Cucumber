@@ -1,12 +1,12 @@
 package Test::BDD::Cucumber::Manual::Integration;
-$Test::BDD::Cucumber::Manual::Integration::VERSION = '0.28';
+$Test::BDD::Cucumber::Manual::Integration::VERSION = '0.29';
 =head1 NAME
 
 Test::BDD::Cucumber::Manual::Integration - Integrating with Test::Builder
 
 =head1 VERSION
 
-version 0.28
+version 0.29
 
 =head1 DESCRIPTION
 
@@ -23,7 +23,6 @@ test-suite. Luckily, this is SUPER easy.
 
  use strict;
  use warnings;
- use FindBin::libs;
 
  # This will find step definitions and feature files in the directory you point
  # it at below
