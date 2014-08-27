@@ -1,5 +1,5 @@
 package App::pherkin;
-$App::pherkin::VERSION = '0.27';
+$App::pherkin::VERSION = '0.28';
 use strict;
 use warnings;
 
@@ -24,7 +24,7 @@ App::pherkin - Run Cucumber tests from the command line
 
 =head1 VERSION
 
-version 0.27
+version 0.28
 
 =head1 SYNOPSIS
 
