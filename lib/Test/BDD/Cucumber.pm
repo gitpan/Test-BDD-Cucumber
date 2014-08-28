@@ -1,12 +1,12 @@
 package Test::BDD::Cucumber;
-$Test::BDD::Cucumber::VERSION = '0.29';
+$Test::BDD::Cucumber::VERSION = '0.30';
 =head1 NAME
 
 Test::BDD::Cucumber - Feature-complete Cucumber-style testing in Perl
 
 =head1 VERSION
 
-version 0.29
+version 0.30
 
 =head1 DESCRIPTION
 

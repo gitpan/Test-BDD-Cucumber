@@ -1,12 +1,12 @@
 package Test::BDD::Cucumber::Manual::Steps;
-$Test::BDD::Cucumber::Manual::Steps::VERSION = '0.29';
+$Test::BDD::Cucumber::Manual::Steps::VERSION = '0.30';
 =head1 NAME
 
 Test::BDD::Cucumber::Manual::Steps - How to write Step Definitions
 
 =head1 VERSION
 
-version 0.29
+version 0.30
 
 =head1 INTRODUCTION
 
