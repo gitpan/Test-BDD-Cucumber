@@ -16,7 +16,7 @@ requires:
   Clone: '0'
   Digest::SHA: '0'
   File::Find::Rule: '0'
-  File::Slurp: '0'
+  File::Slurp: '9999.16'
   Getopt::Long: '0'
   IO::Scalar: '0'
   JSON::MaybeXS: '0'
@@ -32,7 +32,8 @@ requires:
   Test::Differences: '0'
   Test::More: '0'
   YAML::Syck: '0'
+  perl: '5.008'
 resources:
   bugtracker: https://github.com/sheriff/test-bdd-cucumber-perl/issues
   repository: https://github.com/sheriff/test-bdd-cucumber-perl.git
-version: '0.30'
+version: '0.31'

@@ -1,12 +1,18 @@
 package Test::BDD::Cucumber;
-$Test::BDD::Cucumber::VERSION = '0.30';
+$Test::BDD::Cucumber::VERSION = '0.31';
+use strict;
+use warnings;
+1;
+
+# CODE ENDS
+
 =head1 NAME
 
 Test::BDD::Cucumber - Feature-complete Cucumber-style testing in Perl
 
 =head1 VERSION
 
-version 0.30
+version 0.31
 
 =head1 DESCRIPTION
 
@@ -76,5 +82,3 @@ Ben Rodgers C<ben@bdr.org>
 Copyright 2011-2014, Peter Sergeant; Licensed under the same terms as Perl
 
 =cut
-
-1;

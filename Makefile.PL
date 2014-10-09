@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-
+use 5.008;
 
 use ExtUtils::MakeMaker ;
 
@@ -25,7 +25,7 @@ my %WriteMakefileArgs = (
     "Clone" => 0,
     "Digest::SHA" => 0,
     "File::Find::Rule" => 0,
-    "File::Slurp" => 0,
+    "File::Slurp" => "9999.16",
     "Getopt::Long" => 0,
     "IO::Scalar" => 0,
     "JSON::MaybeXS" => 0,
@@ -42,7 +42,7 @@ my %WriteMakefileArgs = (
     "Test::More" => 0,
     "YAML::Syck" => 0
   },
-  "VERSION" => "0.30",
+  "VERSION" => "0.31",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -53,7 +53,7 @@ my %FallbackPrereqs = (
   "Clone" => 0,
   "Digest::SHA" => 0,
   "File::Find::Rule" => 0,
-  "File::Slurp" => 0,
+  "File::Slurp" => "9999.16",
   "Getopt::Long" => 0,
   "IO::Scalar" => 0,
   "JSON::MaybeXS" => 0,

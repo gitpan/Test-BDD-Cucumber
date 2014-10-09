@@ -1,5 +1,5 @@
 package Test::BDD::Cucumber::I18n;
-$Test::BDD::Cucumber::I18n::VERSION = '0.30';
+$Test::BDD::Cucumber::I18n::VERSION = '0.31';
 =encoding utf8
 
 =head1 NAME
@@ -8,7 +8,7 @@ Test::BDD::Cucumber::I18N - Internationalization
 
 =head1 VERSION
 
-version 0.30
+version 0.31
 
 =head1 DESCRIPTION
 
@@ -16,7 +16,7 @@ Internationalization of feature files and step definitions.
 
 =head1 SYNOPSIS
 
-  use Test::BDD::Cucumber::I18N
+  use Test::BDD::Cucumber::I18n
       qw(languages has_language langdef);
 
   # get codes of supported languages
