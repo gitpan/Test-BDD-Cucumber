@@ -1,5 +1,5 @@
 package Test::BDD::Cucumber::Manual::Tutorial
-$Test::BDD::Cucumber::Manual::Tutorial::VERSION = '0.31';
+$Test::BDD::Cucumber::Manual::Tutorial::VERSION = '0.32';
 =encoding utf8
 
 =head1 NAME
@@ -8,7 +8,7 @@ Test::BDD::Cucumber::Manual::Tutorial - Quick Start Guide
 
 =head1 VERSION
 
-version 0.31
+version 0.32
 
 =head1 Introduction
 

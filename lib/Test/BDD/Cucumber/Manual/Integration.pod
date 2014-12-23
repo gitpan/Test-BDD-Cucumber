@@ -1,12 +1,12 @@
 package Test::BDD::Cucumber::Manual::Integration;
-$Test::BDD::Cucumber::Manual::Integration::VERSION = '0.31';
+$Test::BDD::Cucumber::Manual::Integration::VERSION = '0.32';
 =head1 NAME
 
 Test::BDD::Cucumber::Manual::Integration - Integrating with Test::Builder
 
 =head1 VERSION
 
-version 0.31
+version 0.32
 
 =head1 DESCRIPTION
 
